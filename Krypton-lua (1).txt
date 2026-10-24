@@ -28,17 +28,23 @@ screenGui.ScreenInsets = Enum.ScreenInsets.None
 screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 screenGui.ResetOnSpawn = false
 
-local success = pcall(function()
-	if syn and syn.protect_gui then
-		syn.protect_gui(screenGui)
-	elseif protectgui then
-		protectgui(screenGui)
-	end
-	screenGui.Parent = CoreGui
+pcall(function()
+	screenGui.Parent = gethui()
 end)
 
-if not success or not screenGui.Parent then
-	screenGui.Parent = PlayerGui
+if not screenGui.Parent then
+	local success = pcall(function()
+		if syn and syn.protect_gui then
+			syn.protect_gui(screenGui)
+		elseif protectgui then
+			protectgui(screenGui)
+		end
+		screenGui.Parent = CoreGui
+	end)
+
+	if not success or not screenGui.Parent then
+		screenGui.Parent = PlayerGui
+	end
 end
 
 screenGui.DisplayOrder = 10
