@@ -1,0 +1,2646 @@
+--[=[
+____  __.              __                 
+|    |/ _|_____________/  |_  ____   ____  
+|      < \_  __ \____ \   __\/  _ \ /    \ 
+|    |  \ |  | \/  |_> >  | (  <_> )   |  \
+|____|__ \|__|  |   __/|__|  \____/|___|  /
+        \/      |__|                    \/
+]=]
+
+local G2L = {};
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local Stats = game:GetService("Stats")
+local HttpService = game:GetService("HttpService")
+local TweenService = game:GetService("TweenService")
+local CoreGui = game:GetService("CoreGui")
+local TeleportService = game:GetService("TeleportService")
+local StarterGui = game:GetService("StarterGui")
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "Krypton Android"
+screenGui.IgnoreGuiInset = true
+screenGui.ScreenInsets = Enum.ScreenInsets.None
+screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+screenGui.ResetOnSpawn = false
+
+local success = pcall(function()
+	if syn and syn.protect_gui then
+		syn.protect_gui(screenGui)
+	elseif protectgui then
+		protectgui(screenGui)
+	end
+	screenGui.Parent = CoreGui
+end)
+
+if not success or not screenGui.Parent then
+	screenGui.Parent = PlayerGui
+end
+
+screenGui.DisplayOrder = 10
+G2L["1"] = screenGui
+
+G2L["2"] = Instance.new("Frame", G2L["1"]);
+G2L["2"]["BorderSizePixel"] = 0;
+G2L["2"]["BackgroundColor3"] = Color3.fromRGB(49, 53, 60);
+G2L["2"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+G2L["2"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["2"]["Position"] = UDim2.new(0.5, 0, 0.5, 0);
+G2L["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["2"]["Name"] = [[UI]];
+G2L["2"]["BackgroundTransparency"] = 1;
+
+G2L["3"] = Instance.new("Frame", G2L["2"]);
+G2L["3"]["BorderSizePixel"] = 0;
+G2L["3"]["BackgroundColor3"] = Color3.fromRGB(49, 53, 60);
+G2L["3"]["AnchorPoint"] = Vector2.new(0.5, 0.5);
+G2L["3"]["Size"] = UDim2.new(1, 0, 0.9, 0);
+G2L["3"]["Position"] = UDim2.new(0.5, 0, 0.53, 0);
+G2L["3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["3"]["Name"] = [[MainBg]];
+G2L["3"]["BackgroundTransparency"] = 1;
+
+G2L["13b"] = Instance.new("UIAspectRatioConstraint", G2L["3"]);
+G2L["13b"]["AspectRatio"] = 1.64958;
+
+G2L["4"] = Instance.new("Frame", G2L["3"]);
+G2L["4"]["BorderSizePixel"] = 0;
+G2L["4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["4"]["Size"] = UDim2.new(0.08915, 0, 0.93418, 0);
+G2L["4"]["Position"] = UDim2.new(0.02045, 0, 0.03347, 0);
+G2L["4"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["4"]["Name"] = [[PageController]];
+G2L["4"]["BackgroundTransparency"] = 1;
+
+G2L["5"] = Instance.new("ImageLabel", G2L["4"]);
+G2L["5"]["ZIndex"] = -50;
+G2L["5"]["BorderSizePixel"] = 0;
+G2L["5"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["5"]["ImageColor3"] = Color3.fromRGB(23, 25, 35);
+G2L["5"]["Image"] = [[rbxassetid://128823405949573]];
+G2L["5"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["5"]["BackgroundTransparency"] = 1;
+G2L["5"]["Name"] = [[Home]];
+
+G2L["6"] = Instance.new("Frame", G2L["5"]);
+G2L["6"]["BorderSizePixel"] = 0;
+G2L["6"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["6"]["Size"] = UDim2.new(0.57143, 0, 0.08996, 0);
+G2L["6"]["Position"] = UDim2.new(0.35238, 0, 0.2069, 0);
+G2L["6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["6"]["Name"] = [[Design]];
+
+G2L["7"] = Instance.new("UICorner", G2L["6"]);
+G2L["7"]["CornerRadius"] = UDim.new(1.66667, 0);
+
+G2L["8"] = Instance.new("ImageLabel", G2L["6"]);
+G2L["8"]["BorderSizePixel"] = 0;
+G2L["8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["8"]["ImageColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["8"]["Image"] = [[rbxassetid://102379958783744]];
+G2L["8"]["Size"] = UDim2.new(0.46667, 0, 0.46667, 0);
+G2L["8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["8"]["BackgroundTransparency"] = 1;
+G2L["8"]["Name"] = [[Logo]];
+G2L["8"]["Position"] = UDim2.new(0.26667, 0, 0.25, 0);
+
+G2L["9"] = Instance.new("UIGradient", G2L["6"]);
+G2L["9"]["Rotation"] = 90;
+G2L["9"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))};
+
+G2L["a"] = Instance.new("ImageButton", G2L["4"]);
+G2L["a"]["BorderSizePixel"] = 0;
+G2L["a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["a"]["Image"] = [[rbxassetid://117476884780822]];
+G2L["a"]["Size"] = UDim2.new(0.57143, 0, 0.11994, 0);
+G2L["a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["a"]["BackgroundTransparency"] = 1;
+G2L["a"]["Name"] = [[BrandLogo]];
+G2L["a"]["Position"] = UDim2.new(0.20952, 0, 0.03748, 0);
+G2L["a"]["AutoButtonColor"] = false;
+
+local robloxTopBarButton = Instance.new("ImageButton", G2L["1"])
+robloxTopBarButton.Name = "RobloxTopBarKryptonBtn"
+robloxTopBarButton.AnchorPoint = Vector2.new(0.5, 0)
+robloxTopBarButton.BackgroundColor3 = Color3.fromRGB(23, 25, 35)
+robloxTopBarButton.BackgroundTransparency = 0.15
+robloxTopBarButton.BorderSizePixel = 0
+robloxTopBarButton.Position = UDim2.new(0.5, 0, 0, 10)
+robloxTopBarButton.Size = UDim2.new(0, 44, 0, 44)
+robloxTopBarButton.Image = "rbxassetid://117476884780822"
+robloxTopBarButton.ImageColor3 = Color3.fromRGB(255, 255, 255)
+robloxTopBarButton.AutoButtonColor = true
+robloxTopBarButton.Visible = true
+
+local topBarCorner = Instance.new("UICorner", robloxTopBarButton)
+topBarCorner.CornerRadius = UDim.new(1, 0)
+
+local topBarStroke = Instance.new("UIStroke", robloxTopBarButton)
+topBarStroke.Color = Color3.fromRGB(45, 50, 65)
+topBarStroke.Transparency = 0.3
+topBarStroke.Thickness = 1.5
+
+local dragging, dragInput, dragStart, startPos
+local isDraggingAction = false
+local draggableEnabled = true
+
+robloxTopBarButton.InputBegan:Connect(function(input)
+	if not draggableEnabled then return end
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		isDraggingAction = false
+		dragStart = input.Position
+		startPos = robloxTopBarButton.Position
+		
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+
+robloxTopBarButton.InputChanged:Connect(function(input)
+	if not draggableEnabled then return end
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		dragInput = input
+	end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+	if not draggableEnabled then return end
+	if input == dragInput and dragging then
+		local delta = input.Position - dragStart
+		if delta.Magnitude > 5 then
+			isDraggingAction = true
+		end
+		robloxTopBarButton.Position = UDim2.new(
+			startPos.X.Scale, 
+			startPos.X.Offset + delta.X, 
+			startPos.Y.Scale, 
+			startPos.Y.Offset + delta.Y
+		)
+	end
+end)
+
+G2L["b"] = Instance.new("ImageButton", G2L["4"]);
+G2L["b"]["Active"] = true;
+G2L["b"]["BorderSizePixel"] = 0;
+G2L["b"]["Visible"] = false;
+G2L["b"]["BackgroundTransparency"] = 1;
+G2L["b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["b"]["ImageColor3"] = Color3.fromRGB(71, 88, 135);
+G2L["b"]["Selectable"] = true;
+G2L["b"]["Image"] = [[rbxassetid://102379958783744]];
+G2L["b"]["Size"] = UDim2.new(0.26667, 0, 0.04198, 0);
+G2L["b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["b"]["Name"] = [[HomeBtn]];
+G2L["b"]["Position"] = UDim2.new(0.3619, 0, 0.22901, 0);
+
+G2L["c"] = Instance.new("ImageLabel", G2L["4"]);
+G2L["c"]["ZIndex"] = -50;
+G2L["c"]["BorderSizePixel"] = 0;
+G2L["c"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["c"]["ImageColor3"] = Color3.fromRGB(23, 25, 35);
+G2L["c"]["Image"] = [[rbxassetid://77718178090048]];
+G2L["c"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["c"]["Visible"] = true;
+G2L["c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["c"]["BackgroundTransparency"] = 1;
+G2L["c"]["Name"] = [[Code]];
+
+G2L["d"] = Instance.new("Frame", G2L["c"]);
+G2L["d"]["BorderSizePixel"] = 0;
+G2L["d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["d"]["Size"] = UDim2.new(0.57143, 0, 0.08996, 0);
+G2L["d"]["Position"] = UDim2.new(0.35238, 0, 0.3958, 0);
+G2L["d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["d"]["Name"] = [[Design]];
+
+G2L["e"] = Instance.new("UICorner", G2L["d"]);
+G2L["e"]["CornerRadius"] = UDim.new(1.66667, 0);
+
+G2L["f"] = Instance.new("ImageLabel", G2L["d"]);
+G2L["f"]["BorderSizePixel"] = 0;
+G2L["f"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["f"]["ImageColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["f"]["Image"] = [[rbxassetid://127494112932825]];
+G2L["f"]["Size"] = UDim2.new(0.38333, 0, 0.38333, 0);
+G2L["f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["f"]["BackgroundTransparency"] = 1;
+G2L["f"]["Name"] = [[Logo]];
+G2L["f"]["Position"] = UDim2.new(0.3, 0, 0.3, 0);
+
+G2L["10"] = Instance.new("UIGradient", G2L["d"]);
+G2L["10"]["Rotation"] = 90;
+G2L["10"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))};
+
+G2L["11"] = Instance.new("ImageButton", G2L["4"]);
+G2L["11"]["Active"] = true;
+G2L["11"]["BorderSizePixel"] = 0;
+G2L["11"]["BackgroundTransparency"] = 1;
+G2L["11"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["11"]["ImageColor3"] = Color3.fromRGB(71, 88, 135);
+G2L["11"]["Selectable"] = true;
+G2L["11"]["Image"] = [[rbxassetid://127494112932825]];
+G2L["11"]["Size"] = UDim2.new(0.21905, 0, 0.03448, 0);
+G2L["11"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["11"]["Name"] = [[CodeBtn]];
+G2L["11"]["Position"] = UDim2.new(0.37143, 0, 0.42259, 0);
+
+G2L["12"] = Instance.new("ImageLabel", G2L["4"]);
+G2L["12"]["ZIndex"] = -50;
+G2L["12"]["BorderSizePixel"] = 0;
+G2L["12"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["12"]["ImageColor3"] = Color3.fromRGB(23, 25, 35);
+G2L["12"]["Image"] = [[rbxassetid://125778077842009]];
+G2L["12"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["12"]["Visible"] = false;
+G2L["12"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["12"]["BackgroundTransparency"] = 1;
+G2L["12"]["Name"] = [[Cloud]];
+
+G2L["13"] = Instance.new("Frame", G2L["12"]);
+G2L["13"]["BorderSizePixel"] = 0;
+G2L["13"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["13"]["Size"] = UDim2.new(0.57143, 0, 0.08996, 0);
+G2L["13"]["Position"] = UDim2.new(0.35238, 0, 0.58471, 0);
+G2L["13"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["13"]["Name"] = [[Design]];
+
+G2L["14"] = Instance.new("UICorner", G2L["13"]);
+G2L["14"]["CornerRadius"] = UDim.new(1.66667, 0);
+
+G2L["15"] = Instance.new("ImageLabel", G2L["13"]);
+G2L["15"]["BorderSizePixel"] = 0;
+G2L["15"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["15"]["ImageColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["15"]["Image"] = [[rbxassetid://107360520726011]];
+G2L["15"]["Size"] = UDim2.new(0.43333, 0, 0.43333, 0);
+G2L["15"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["15"]["BackgroundTransparency"] = 1;
+G2L["15"]["Name"] = [[Logo]];
+G2L["15"]["Position"] = UDim2.new(0.28333, 0, 0.28333, 0);
+
+G2L["16"] = Instance.new("UIGradient", G2L["13"]);
+G2L["16"]["Rotation"] = 90;
+G2L["16"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))};
+
+G2L["17"] = Instance.new("ImageLabel", G2L["4"]);
+G2L["17"]["ZIndex"] = -50;
+G2L["17"]["BorderSizePixel"] = 0;
+G2L["17"]["BackgroundColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["17"]["ImageColor3"] = Color3.fromRGB(23, 25, 35);
+G2L["17"]["Image"] = [[rbxassetid://96912394158966]];
+G2L["17"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["17"]["Visible"] = false;
+G2L["17"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["17"]["BackgroundTransparency"] = 1;
+G2L["17"]["Name"] = [[Settings]];
+
+G2L["18"] = Instance.new("Frame", G2L["17"]);
+G2L["18"]["BorderSizePixel"] = 0;
+G2L["18"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["18"]["Size"] = UDim2.new(0.57143, 0, 0.08996, 0);
+G2L["18"]["Position"] = UDim2.new(0.35238, 0, 0.77211, 0);
+G2L["18"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["18"]["Name"] = [[Design]];
+
+G2L["19"] = Instance.new("UICorner", G2L["18"]);
+G2L["19"]["CornerRadius"] = UDim.new(1.66667, 0);
+
+G2L["1a"] = Instance.new("ImageLabel", G2L["18"]);
+G2L["1a"]["BorderSizePixel"] = 0;
+G2L["1a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["1a"]["ImageColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["1a"]["Image"] = [[rbxassetid://133076038757650]];
+G2L["1a"]["Size"] = UDim2.new(0.5, 0, 0.5, 0);
+G2L["1a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["1a"]["BackgroundTransparency"] = 1;
+G2L["1a"]["Name"] = [[Logo]];
+G2L["1a"]["Position"] = UDim2.new(0.25, 0, 0.25, 0);
+
+G2L["1b"] = Instance.new("UIGradient", G2L["18"]);
+G2L["1b"]["Rotation"] = 90;
+G2L["1b"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))};
+
+G2L["1c"] = Instance.new("ImageButton", G2L["4"]);
+G2L["1c"]["Active"] = true;
+G2L["1c"]["BorderSizePixel"] = 0;
+G2L["1c"]["BackgroundTransparency"] = 1;
+G2L["1c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["1c"]["ImageColor3"] = Color3.fromRGB(71, 88, 135);
+G2L["1c"]["Selectable"] = true;
+G2L["1c"]["Image"] = [[rbxassetid://107360520726011]];
+G2L["1c"]["Size"] = UDim2.new(0.24762, 0, 0.03898, 0);
+G2L["1c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["1c"]["Name"] = [[CloudBtn]];
+G2L["1c"]["Position"] = UDim2.new(0.37381, 0, 0.61132, 0);
+
+G2L["1d"] = Instance.new("ImageButton", G2L["4"]);
+G2L["1d"]["Active"] = true;
+G2L["1d"]["BorderSizePixel"] = 0;
+G2L["1d"]["BackgroundTransparency"] = 1;
+G2L["1d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["1d"]["ImageColor3"] = Color3.fromRGB(71, 88, 135);
+G2L["1d"]["Selectable"] = true;
+G2L["1d"]["Image"] = [[rbxassetid://133076038757650]];
+G2L["1d"]["Size"] = UDim2.new(0.28571, 0, 0.04498, 0);
+G2L["1d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["1d"]["Name"] = [[SettingBtn]];
+G2L["1d"]["Position"] = UDim2.new(0.34524, 0, 0.79423, 0);
+
+G2L["1e"] = Instance.new("Frame", G2L["3"]);
+G2L["1e"]["BorderSizePixel"] = 0;
+G2L["1e"]["BackgroundColor3"] = Color3.fromRGB(86, 86, 128);
+G2L["1e"]["Size"] = UDim2.new(0.84565, 0, 0.93418, 0);
+G2L["1e"]["Position"] = UDim2.new(0.13035, 0, 0.03347, 0);
+G2L["1e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["1e"]["Name"] = [[MainFrame]];
+G2L["1e"]["BackgroundTransparency"] = 1;
+G2L["1e"]["ClipsDescendants"] = true;
+
+G2L["1f"] = Instance.new("Frame", G2L["1e"]);
+G2L["1f"]["Visible"] = true;
+G2L["1f"]["BorderSizePixel"] = 0;
+G2L["1f"]["BackgroundColor3"] = Color3.fromRGB(23, 25, 35);
+G2L["1f"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["1f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["1f"]["Name"] = [[Executor]];
+G2L["1f"]["BackgroundTransparency"] = 1;
+
+G2L["20"] = Instance.new("Frame", G2L["1f"]);
+G2L["20"]["BorderSizePixel"] = 0;
+G2L["20"]["BackgroundColor3"] = Color3.fromRGB(23, 25, 35);
+G2L["20"]["Size"] = UDim2.new(1, 0, 0.13493, 0);
+G2L["20"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["20"]["Name"] = [[UpperFrame]];
+
+G2L["21"] = Instance.new("UICorner", G2L["20"]);
+G2L["21"]["CornerRadius"] = UDim.new(0.3, 0);
+
+G2L["22"] = Instance.new("ScrollingFrame", G2L["20"]);
+G2L["22"]["Active"] = true;
+G2L["22"]["BorderSizePixel"] = 0;
+G2L["22"]["CanvasSize"] = UDim2.new(0, 0, 0, 0);
+G2L["22"]["HorizontalScrollBarInset"] = Enum.ScrollBarInset.Always;
+G2L["22"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["22"]["AutomaticCanvasSize"] = Enum.AutomaticSize.X;
+G2L["22"]["Size"] = UDim2.new(0.95884, 0, 0.6, 0);
+G2L["22"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["22"]["Position"] = UDim2.new(0.02008, 0, 0.2, 0);
+G2L["22"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["22"]["ScrollBarThickness"] = 0;
+G2L["22"]["BackgroundTransparency"] = 1;
+
+G2L["23"] = Instance.new("TextButton", G2L["22"]);
+G2L["23"]["BorderSizePixel"] = 0;
+G2L["23"]["TextSize"] = 14;
+G2L["23"]["AutoButtonColor"] = false;
+G2L["23"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["23"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["23"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["23"]["BackgroundTransparency"] = 0;
+G2L["23"]["Size"] = UDim2.new(0.1267, 0, 0.95456, 0);
+G2L["23"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["23"]["Text"] = [[]];
+G2L["23"]["Name"] = [[Tab]];
+G2L["23"]["Position"] = UDim2.new(0, 0, 0, 0);
+
+G2L["24"] = Instance.new("UICorner", G2L["23"]);
+G2L["24"]["CornerRadius"] = UDim.new(0.28, 0);
+
+G2L["25"] = Instance.new("TextLabel", G2L["23"]);
+G2L["25"]["TextWrapped"] = true;
+G2L["25"]["TextStrokeTransparency"] = 0.9;
+G2L["25"]["BorderSizePixel"] = 0;
+G2L["25"]["TextSize"] = 14;
+G2L["25"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["25"]["TextStrokeColor3"] = Color3.fromRGB(71, 88, 135);
+G2L["25"]["TextScaled"] = true;
+G2L["25"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["25"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["25"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["25"]["BackgroundTransparency"] = 1;
+G2L["25"]["Size"] = UDim2.new(0.58333, 0, 0.6, 0);
+G2L["25"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["25"]["Text"] = [[Tab.1]];
+G2L["25"]["Position"] = UDim2.new(0.0875, 0, 0.2, 0);
+
+G2L["26"] = Instance.new("ImageButton", G2L["23"]);
+G2L["26"]["BorderSizePixel"] = 0;
+G2L["26"]["Visible"] = false;
+G2L["26"]["BackgroundTransparency"] = 1;
+G2L["26"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["26"]["ImageColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["26"]["Image"] = [[rbxassetid://80433169334469]];
+G2L["26"]["Size"] = UDim2.new(0.16821, 0, 0.4, 0);
+G2L["26"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["26"]["Name"] = [[CloseTab]];
+G2L["26"]["Position"] = UDim2.new(0.73694, 0, 0.3, 0);
+
+G2L["27"] = Instance.new("UIGradient", G2L["23"]);
+G2L["27"]["Rotation"] = 90;
+G2L["27"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))};
+
+G2L["28"] = Instance.new("UIListLayout", G2L["22"]);
+G2L["28"]["Padding"] = UDim.new(0.018, 0);
+G2L["28"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
+G2L["28"]["FillDirection"] = Enum.FillDirection.Horizontal;
+
+G2L["29"] = Instance.new("UIPadding", G2L["22"]);
+G2L["29"]["PaddingTop"] = UDim.new(0.03, 0);
+
+G2L["2a"] = Instance.new("TextButton", G2L["22"]);
+G2L["2a"]["TextWrapped"] = true;
+G2L["2a"]["TextStrokeTransparency"] = 0.9;
+G2L["2a"]["BorderSizePixel"] = 0;
+G2L["2a"]["TextSize"] = 14;
+G2L["2a"]["TextScaled"] = true;
+G2L["2a"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["2a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["2a"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["2a"]["Size"] = UDim2.new(0.05236, 0, 0.95456, 0);
+G2L["2a"]["LayoutOrder"] = 999999999;
+G2L["2a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["2a"]["Text"] = [[+]];
+G2L["2a"]["Name"] = [[AddTab]];
+
+G2L["2b"] = Instance.new("UICorner", G2L["2a"]);
+G2L["2b"]["CornerRadius"] = UDim.new(0.28, 0);
+
+G2L["2c"] = Instance.new("UIGradient", G2L["2a"]);
+G2L["2c"]["Rotation"] = 90;
+G2L["2c"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))};
+
+G2L["32"] = Instance.new("Frame", G2L["1f"]);
+G2L["32"]["BorderSizePixel"] = 0;
+G2L["32"]["BackgroundColor3"] = Color3.fromRGB(23, 25, 35);
+G2L["32"]["Size"] = UDim2.new(1, 0, 0.83058, 0);
+G2L["32"]["Position"] = UDim2.new(0, 0, 0.16942, 0);
+G2L["32"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["32"]["Name"] = [[MainFrame]];
+local mainFrameCorner = Instance.new("UICorner", G2L["32"])
+mainFrameCorner.CornerRadius = UDim.new(0.04874, 0)
+
+G2L["34"] = Instance.new("ScrollingFrame", G2L["32"]);
+G2L["34"]["Active"] = true;
+G2L["34"]["BorderSizePixel"] = 0;
+G2L["34"]["VerticalScrollBarInset"] = Enum.ScrollBarInset.Always;
+G2L["34"]["BackgroundColor3"] = Color3.fromRGB(171, 0, 128);
+G2L["34"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
+G2L["34"]["Size"] = UDim2.new(0.95984, 0, 0.77256, 0);
+G2L["34"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["34"]["Position"] = UDim2.new(0.02008, 0, 0.03249, 0);
+G2L["34"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["34"]["ScrollBarThickness"] = 0;
+G2L["34"]["BackgroundTransparency"] = 1;
+
+G2L["35"] = Instance.new("TextLabel", G2L["34"]);
+G2L["35"]["BorderSizePixel"] = 0;
+G2L["35"]["TextSize"] = 14;
+G2L["35"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+G2L["35"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["35"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["35"]["TextColor3"] = Color3.fromRGB(110, 115, 130);
+G2L["35"]["BackgroundTransparency"] = 1;
+G2L["35"]["Size"] = UDim2.new(0.05, 0, 0, 5000);
+G2L["35"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["35"]["Text"] = [[1]];
+G2L["35"]["TextXAlignment"] = Enum.TextXAlignment.Center;
+G2L["35"]["Name"] = [[LineNumber]];
+
+G2L["36"] = Instance.new("TextBox", G2L["34"]);
+G2L["36"]["CursorPosition"] = -1;
+G2L["36"]["Name"] = [[Editor]];
+G2L["36"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["36"]["PlaceholderColor3"] = Color3.fromRGB(128, 128, 128);
+G2L["36"]["BorderSizePixel"] = 0;
+G2L["36"]["TextSize"] = 14;
+G2L["36"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["36"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+G2L["36"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["36"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["36"]["ClearTextOnFocus"] = false;
+G2L["36"]["PlaceholderText"] = [[print("Welcome to Krypton Android")]];
+G2L["36"]["Size"] = UDim2.new(0.92, 0, 0, 5000);
+G2L["36"]["Position"] = UDim2.new(0.075, 0, 0, 0);
+G2L["36"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["36"]["Text"] = [[print("Welcome to Krypton Android")]];
+G2L["36"]["BackgroundTransparency"] = 1;
+
+local lineNumLabel = G2L["35"]
+local editorBox = G2L["36"]
+
+local function updateLineNumbers()
+	local text = editorBox.Text
+	local count = 1
+	for _ in text:gmatch("\n") do
+		count = count + 1
+	end
+	if text:sub(-1) == "\n" then
+		count = count + 1
+	end
+	
+	local totalHeight = math.max(5000, count * 18)
+	editorBox.Size = UDim2.new(0.92, 0, 0, totalHeight)
+	lineNumLabel.Size = UDim2.new(0.05, 0, 0, totalHeight)
+	
+	local lines = {}
+	for i = 1, count do
+		table.insert(lines, tostring(i) .. ". ")
+	end
+	lineNumLabel.Text = table.concat(lines, "\n")
+end
+
+editorBox:GetPropertyChangedSignal("Text"):Connect(updateLineNumbers)
+updateLineNumbers()
+
+G2L["37"] = Instance.new("CanvasGroup", G2L["32"]);
+G2L["37"]["BorderSizePixel"] = 0;
+G2L["37"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["37"]["Size"] = UDim2.new(0.95984, 0, 0.28, 0);
+G2L["37"]["Position"] = UDim2.new(0.02008, 0, 0.52372, 0);
+G2L["37"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["37"]["Name"] = [[FadeEffect]];
+
+G2L["38"] = Instance.new("UIGradient", G2L["37"]);
+G2L["38"]["Rotation"] = -90;
+G2L["38"]["Transparency"] = NumberSequence.new{NumberSequenceKeypoint.new(0.000, 0), NumberSequenceKeypoint.new(0.500, 0.3), NumberSequenceKeypoint.new(1.000, 1)};
+G2L["38"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(23, 25, 35)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(23, 25, 35))};
+
+G2L["39"] = Instance.new("TextButton", G2L["32"]);
+G2L["39"]["BorderSizePixel"] = 0;
+G2L["39"]["TextSize"] = 14;
+G2L["39"]["AutoButtonColor"] = false;
+G2L["39"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["39"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["39"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["39"]["Size"] = UDim2.new(0.1267, 0, 0.09137, 0);
+G2L["39"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["39"]["Text"] = [[]];
+G2L["39"]["Name"] = [[Run]];
+G2L["39"]["Position"] = UDim2.new(0.85241, 0, 0.87184, 0);
+
+G2L["3a"] = Instance.new("UICorner", G2L["39"]);
+G2L["3a"]["CornerRadius"] = UDim.new(0.28, 0);
+
+G2L["3b"] = Instance.new("TextLabel", G2L["39"]);
+G2L["3b"]["TextWrapped"] = true;
+G2L["3b"]["TextStrokeTransparency"] = 0.9;
+G2L["3b"]["BorderSizePixel"] = 0;
+G2L["3b"]["TextSize"] = 14;
+G2L["3b"]["TextScaled"] = true;
+G2L["3b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["3b"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["3b"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["3b"]["BackgroundTransparency"] = 1;
+G2L["3b"]["Size"] = UDim2.new(0.58333, 0, 0.6, 0);
+G2L["3b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["3b"]["Text"] = [[Run]];
+G2L["3b"]["Name"] = [[Title]];
+G2L["3b"]["Position"] = UDim2.new(0.0875, 0, 0.2, 0);
+
+G2L["3c"] = Instance.new("ImageButton", G2L["39"]);
+G2L["3c"]["BorderSizePixel"] = 0;
+G2L["3c"]["BackgroundTransparency"] = 1;
+G2L["3c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["3c"]["ImageColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["3c"]["Image"] = [[rbxassetid://70628978191199]];
+G2L["3c"]["Size"] = UDim2.new(0.15915, 0, 0.39677, 0);
+G2L["3c"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["3c"]["Name"] = [[Logo]];
+G2L["3c"]["Position"] = UDim2.new(0.6655, 0, 0.3, 0);
+
+G2L["3d"] = Instance.new("UIGradient", G2L["39"]);
+G2L["3d"]["Rotation"] = 90;
+G2L["3d"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))};
+
+G2L["3e"] = Instance.new("TextButton", G2L["32"]);
+G2L["3e"]["BorderSizePixel"] = 0;
+G2L["3e"]["TextSize"] = 14;
+G2L["3e"]["AutoButtonColor"] = false;
+G2L["3e"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["3e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["3e"]["FontFace"] = Font.new([[rbxasset://fonts/families/SourceSansPro.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["3e"]["Size"] = UDim2.new(0.05041, 0, 0.09063, 0);
+G2L["3e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["3e"]["Text"] = [[]];
+G2L["3e"]["Name"] = [[Clear]];
+G2L["3e"]["Position"] = UDim2.new(0.795, 0, 0.87152, 0);
+
+G2L["3f"] = Instance.new("UICorner", G2L["3e"]);
+G2L["3f"]["CornerRadius"] = UDim.new(0.28, 0);
+
+G2L["40"] = Instance.new("UIGradient", G2L["3e"]);
+G2L["40"]["Rotation"] = 90;
+G2L["40"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))};
+
+G2L["41"] = Instance.new("ImageLabel", G2L["3e"]);
+G2L["41"]["BorderSizePixel"] = 0;
+G2L["41"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["41"]["ImageColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["41"]["Image"] = [[rbxassetid://117078316215069]];
+G2L["41"]["Size"] = UDim2.new(0.6, 0, 0.6, 0);
+G2L["41"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["41"]["BackgroundTransparency"] = 1;
+G2L["41"]["Position"] = UDim2.new(0.2, 0, 0.2, 0);
+
+G2L["4f"] = Instance.new("Frame", G2L["1e"]);
+G2L["4f"]["Visible"] = false;
+G2L["4f"]["BorderSizePixel"] = 0;
+G2L["4f"]["BackgroundColor3"] = Color3.fromRGB(23, 25, 35);
+G2L["4f"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["4f"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["4f"]["Name"] = [[Cloud]];
+G2L["4f"]["BackgroundTransparency"] = 1;
+
+G2L["50"] = Instance.new("Frame", G2L["4f"]);
+G2L["50"]["BorderSizePixel"] = 0;
+G2L["50"]["BackgroundColor3"] = Color3.fromRGB(23, 25, 35);
+G2L["50"]["Size"] = UDim2.new(1, 0, 0.66, 0);
+G2L["50"]["Position"] = UDim2.new(0, 0, 0.32, 0);
+G2L["50"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["50"]["Name"] = [[MainFrame]];
+G2L["50"]["BackgroundTransparency"] = 1;
+
+G2L["51"] = Instance.new("UICorner", G2L["50"]);
+G2L["51"]["CornerRadius"] = UDim.new(0.04874, 0);
+
+G2L["52"] = Instance.new("ScrollingFrame", G2L["50"]);
+G2L["52"]["Active"] = true;
+G2L["52"]["BorderSizePixel"] = 0;
+G2L["52"]["VerticalScrollBarInset"] = Enum.ScrollBarInset.Always;
+G2L["52"]["BackgroundColor3"] = Color3.fromRGB(86, 86, 128);
+G2L["52"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y;
+G2L["52"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["52"]["Position"] = UDim2.new(0.001, 0, 0, 0);
+G2L["52"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["52"]["ScrollBarThickness"] = 0;
+G2L["52"]["BackgroundTransparency"] = 1;
+
+local cloudListLayout = Instance.new("UIListLayout", G2L["52"])
+cloudListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+cloudListLayout.Padding = UDim.new(0, 12)
+
+local cloudPadding = Instance.new("UIPadding", G2L["52"])
+cloudPadding.PaddingTop = UDim.new(0, 10)
+cloudPadding.PaddingBottom = UDim.new(0, 10)
+cloudPadding.PaddingLeft = UDim.new(0, 12)
+cloudPadding.PaddingRight = UDim.new(0, 12)
+
+G2L["85"] = Instance.new("Frame", G2L["4f"]);
+G2L["85"]["BorderSizePixel"] = 0;
+G2L["85"]["BackgroundColor3"] = Color3.fromRGB(23, 25, 35);
+G2L["85"]["Size"] = UDim2.new(1, 0, 0.13, 0);
+G2L["85"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["85"]["Name"] = [[UpperFrame]];
+
+G2L["86"] = Instance.new("UICorner", G2L["85"]);
+G2L["86"]["CornerRadius"] = UDim.new(0.3, 0);
+
+local cloudUpperFrame = G2L["85"]
+
+local cloudTabContainer = Instance.new("Frame", cloudUpperFrame)
+cloudTabContainer.Name = "TabContainer"
+cloudTabContainer.BackgroundTransparency = 1
+cloudTabContainer.Position = UDim2.new(0.02, 0, 0.15, 0)
+cloudTabContainer.Size = UDim2.new(0, 0, 0, 34)
+cloudTabContainer.AutomaticSize = Enum.AutomaticSize.X
+
+local cloudTabListLayout = Instance.new("UIListLayout", cloudTabContainer)
+cloudTabListLayout.FillDirection = Enum.FillDirection.Horizontal
+cloudTabListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left
+cloudTabListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+cloudTabListLayout.Padding = UDim.new(0, 6)
+cloudTabListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+local localSubHeaderBar = Instance.new("Frame", G2L["4f"])
+localSubHeaderBar.Name = "LocalSubHeaderBar"
+localSubHeaderBar.BackgroundTransparency = 1
+localSubHeaderBar.Position = UDim2.new(0.015, 0, 0.15, 0)
+localSubHeaderBar.Size = UDim2.new(0.97, 0, 0, 38)
+localSubHeaderBar.Visible = false
+
+local localSubTabContainer = Instance.new("Frame", localSubHeaderBar)
+localSubTabContainer.Name = "LocalSubTabContainer"
+localSubTabContainer.BackgroundTransparency = 1
+localSubTabContainer.Size = UDim2.new(0.75, 0, 1, 0)
+
+local localSubTabListLayout = Instance.new("UIListLayout", localSubTabContainer)
+localSubTabListLayout.FillDirection = Enum.FillDirection.Horizontal
+localSubTabListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Left
+localSubTabListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+localSubTabListLayout.Padding = UDim.new(0, 8)
+localSubTabListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+local addLocalScriptBtn = Instance.new("TextButton", localSubHeaderBar)
+addLocalScriptBtn.Name = "AddLocalScriptBtn"
+addLocalScriptBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+addLocalScriptBtn.BorderSizePixel = 0
+addLocalScriptBtn.AnchorPoint = Vector2.new(1, 0.5)
+addLocalScriptBtn.Position = UDim2.new(1, 0, 0.5, 0)
+addLocalScriptBtn.Size = UDim2.new(0, 110, 0, 32)
+addLocalScriptBtn.AutoButtonColor = false
+addLocalScriptBtn.Text = "+ Add Script"
+addLocalScriptBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+addLocalScriptBtn.Font = Enum.Font.SourceSansBold
+addLocalScriptBtn.TextSize = 13
+
+local addCorner = Instance.new("UICorner", addLocalScriptBtn)
+addCorner.CornerRadius = UDim.new(0.3, 0)
+local addGrad = Instance.new("UIGradient", addLocalScriptBtn)
+addGrad.Rotation = 90
+addGrad.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))}
+
+local cloudSearchContainer = Instance.new("Frame", G2L["4f"])
+cloudSearchContainer.Name = "SearchContainer"
+cloudSearchContainer.BackgroundTransparency = 1
+cloudSearchContainer.Position = UDim2.new(0.015, 0, 0.15, 0)
+cloudSearchContainer.Size = UDim2.new(0.97, 0, 0, 38)
+cloudSearchContainer.Visible = false
+
+local cloudSearchBox = Instance.new("TextBox", cloudSearchContainer)
+cloudSearchBox.Name = "SearchBox"
+cloudSearchBox.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+cloudSearchBox.BorderSizePixel = 0
+cloudSearchBox.Position = UDim2.new(0, 0, 0, 0)
+cloudSearchBox.Size = UDim2.new(0.79, 0, 1, 0)
+cloudSearchBox.Font = Enum.Font.SourceSans
+cloudSearchBox.PlaceholderText = "Search scripts..."
+cloudSearchBox.PlaceholderColor3 = Color3.fromRGB(120, 125, 140)
+cloudSearchBox.Text = ""
+cloudSearchBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+cloudSearchBox.TextSize = 13
+cloudSearchBox.TextXAlignment = Enum.TextXAlignment.Left
+
+local searchBoxCorner = Instance.new("UICorner", cloudSearchBox)
+searchBoxCorner.CornerRadius = UDim.new(0.3, 0)
+
+local searchPadding = Instance.new("UIPadding", cloudSearchBox)
+searchPadding.PaddingLeft = UDim.new(0, 10)
+
+local cloudSearchBtn = Instance.new("TextButton", cloudSearchContainer)
+cloudSearchBtn.Name = "SearchBtn"
+cloudSearchBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+cloudSearchBtn.BorderSizePixel = 0
+cloudSearchBtn.Position = UDim2.new(0.81, 0, 0, 0)
+cloudSearchBtn.Size = UDim2.new(0.19, 0, 1, 0)
+cloudSearchBtn.AutoButtonColor = false
+cloudSearchBtn.Text = "Search"
+cloudSearchBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+cloudSearchBtn.Font = Enum.Font.SourceSansBold
+cloudSearchBtn.TextSize = 13
+
+local searchBtnCorner = Instance.new("UICorner", cloudSearchBtn)
+searchBtnCorner.CornerRadius = UDim.new(0.3, 0)
+
+local searchBtnGrad = Instance.new("UIGradient", cloudSearchBtn)
+searchBtnGrad.Rotation = 90
+searchBtnGrad.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))}
+
+local modalOverlay = Instance.new("Frame", G2L["1"])
+modalOverlay.Name = "AddScriptModal"
+modalOverlay.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+modalOverlay.BackgroundTransparency = 0.5
+modalOverlay.Size = UDim2.new(1, 0, 1, 0)
+modalOverlay.Visible = false
+modalOverlay.ZIndex = 100
+
+local modalCard = Instance.new("Frame", modalOverlay)
+modalCard.Name = "ModalCard"
+modalCard.AnchorPoint = Vector2.new(0.5, 0.5)
+modalCard.BackgroundColor3 = Color3.fromRGB(23, 25, 35)
+modalCard.BorderSizePixel = 0
+modalCard.Position = UDim2.new(0.5, 0, 0.5, 0)
+modalCard.Size = UDim2.new(0, 380, 0, 280)
+modalCard.ZIndex = 101
+
+local modalCorner = Instance.new("UICorner", modalCard)
+modalCorner.CornerRadius = UDim.new(0.08, 0)
+
+local modalTitle = Instance.new("TextLabel", modalCard)
+modalTitle.BackgroundTransparency = 1
+modalTitle.Position = UDim2.new(0.06, 0, 0.06, 0)
+modalTitle.Size = UDim2.new(0.88, 0, 0.12, 0)
+modalTitle.Font = Enum.Font.SourceSansBold
+modalTitle.Text = "Add New Script"
+modalTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+modalTitle.TextSize = 16
+modalTitle.TextXAlignment = Enum.TextXAlignment.Left
+modalTitle.ZIndex = 102
+
+local nameInputBox = Instance.new("TextBox", modalCard)
+nameInputBox.Name = "NameInput"
+nameInputBox.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+nameInputBox.BorderSizePixel = 0
+nameInputBox.Position = UDim2.new(0.06, 0, 0.22, 0)
+nameInputBox.Size = UDim2.new(0.88, 0, 0, 36)
+nameInputBox.Font = Enum.Font.SourceSans
+nameInputBox.PlaceholderText = "Script Name..."
+nameInputBox.PlaceholderColor3 = Color3.fromRGB(120, 125, 140)
+nameInputBox.Text = ""
+nameInputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+nameInputBox.TextSize = 13
+nameInputBox.TextXAlignment = Enum.TextXAlignment.Left
+nameInputBox.ZIndex = 102
+local nameCorner = Instance.new("UICorner", nameInputBox)
+nameCorner.CornerRadius = UDim.new(0.2, 0)
+local namePad = Instance.new("UIPadding", nameInputBox)
+namePad.PaddingLeft = UDim.new(0, 10)
+
+local codeInputBox = Instance.new("TextBox", modalCard)
+codeInputBox.Name = "CodeInput"
+codeInputBox.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+codeInputBox.BorderSizePixel = 0
+codeInputBox.Position = UDim2.new(0.06, 0, 0.42, 0)
+codeInputBox.Size = UDim2.new(0.88, 0, 0, 95)
+codeInputBox.Font = Enum.Font.SourceSans
+codeInputBox.PlaceholderText = "Script Code / Loadstring..."
+codeInputBox.PlaceholderColor3 = Color3.fromRGB(120, 125, 140)
+codeInputBox.Text = ""
+codeInputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+codeInputBox.TextSize = 13
+codeInputBox.TextXAlignment = Enum.TextXAlignment.Left
+codeInputBox.TextYAlignment = Enum.TextYAlignment.Top
+codeInputBox.ClearTextOnFocus = false
+codeInputBox.MultiLine = true
+codeInputBox.ZIndex = 102
+local codeCorner = Instance.new("UICorner", codeInputBox)
+codeCorner.CornerRadius = UDim.new(0.08, 0)
+local codePad = Instance.new("UIPadding", codeInputBox)
+codePad.PaddingLeft = UDim.new(0, 10)
+codePad.PaddingTop = UDim.new(0, 8)
+codePad.PaddingRight = UDim.new(0, 10)
+codePad.PaddingBottom = UDim.new(0, 8)
+
+local cancelBtn = Instance.new("TextButton", modalCard)
+cancelBtn.Name = "CancelBtn"
+cancelBtn.BackgroundColor3 = Color3.fromRGB(45, 50, 65)
+cancelBtn.BorderSizePixel = 0
+cancelBtn.Position = UDim2.new(0.06, 0, 0.78, 0)
+cancelBtn.Size = UDim2.new(0.42, 0, 0, 36)
+cancelBtn.AutoButtonColor = false
+cancelBtn.Text = "Cancel"
+cancelBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+cancelBtn.Font = Enum.Font.SourceSansBold
+cancelBtn.TextSize = 13
+cancelBtn.ZIndex = 102
+local cancelCorner = Instance.new("UICorner", cancelBtn)
+cancelCorner.CornerRadius = UDim.new(0.3, 0)
+
+local doneBtn = Instance.new("TextButton", modalCard)
+doneBtn.Name = "DoneBtn"
+doneBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+doneBtn.BorderSizePixel = 0
+doneBtn.Position = UDim2.new(0.52, 0, 0.78, 0)
+doneBtn.Size = UDim2.new(0.42, 0, 0, 36)
+doneBtn.AutoButtonColor = false
+doneBtn.Text = "Done"
+doneBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+doneBtn.Font = Enum.Font.SourceSansBold
+doneBtn.TextSize = 13
+doneBtn.ZIndex = 102
+local doneCorner = Instance.new("UICorner", doneBtn)
+doneCorner.CornerRadius = UDim.new(0.3, 0)
+local doneGrad = Instance.new("UIGradient", doneBtn)
+doneGrad.Rotation = 90
+doneGrad.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))}
+
+G2L["95"] = Instance.new("Frame", G2L["1e"]);
+G2L["95"]["Visible"] = false;
+G2L["95"]["BorderSizePixel"] = 0;
+G2L["95"]["BackgroundColor3"] = Color3.fromRGB(23, 25, 35);
+G2L["95"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["95"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["95"]["Name"] = [[Settings]];
+G2L["95"]["BackgroundTransparency"] = 1;
+
+G2L["96"] = Instance.new("Frame", G2L["95"]);
+G2L["96"]["BorderSizePixel"] = 0;
+G2L["96"]["BackgroundColor3"] = Color3.fromRGB(23, 25, 35);
+G2L["96"]["Size"] = UDim2.new(1, 0, 0.13493, 0);
+G2L["96"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["96"]["Name"] = [[UpperFrame]];
+
+local settingsTopCorner = Instance.new("UICorner", G2L["96"])
+settingsTopCorner.CornerRadius = UDim.new(0.3, 0)
+
+local settingsTabContainer = Instance.new("Frame", G2L["96"])
+settingsTabContainer.Name = "TabContainer"
+settingsTabContainer.BackgroundTransparency = 1
+settingsTabContainer.AnchorPoint = Vector2.new(0.5, 0.5)
+settingsTabContainer.Position = UDim2.new(0.5, 0, 0.5, 0)
+settingsTabContainer.Size = UDim2.new(0, 0, 0, 36)
+settingsTabContainer.AutomaticSize = Enum.AutomaticSize.X
+
+local upperTabList = Instance.new("UIListLayout", settingsTabContainer)
+upperTabList.FillDirection = Enum.FillDirection.Horizontal
+upperTabList.HorizontalAlignment = Enum.HorizontalAlignment.Center
+upperTabList.VerticalAlignment = Enum.VerticalAlignment.Center
+upperTabList.Padding = UDim.new(0, 10)
+
+local function createUpperTabButton(name, text)
+	local btn = Instance.new("TextButton", settingsTabContainer)
+	btn.Name = name
+	btn.Size = UDim2.new(0, 110, 0, 36)
+	btn.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+	btn.BorderSizePixel = 0
+	btn.AutoButtonColor = false
+	btn.Text = text
+	btn.TextColor3 = Color3.fromRGB(140, 145, 160)
+	btn.Font = Enum.Font.SourceSansBold
+	btn.TextSize = 14
+	
+	local corner = Instance.new("UICorner", btn)
+	corner.CornerRadius = UDim.new(0.3, 0)
+	
+	local grad = Instance.new("UIGradient", btn)
+	grad.Name = "TabGradient"
+	grad.Rotation = 90
+	grad.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))}
+	grad.Enabled = false
+	
+	return btn
+end
+
+local tabVideoBtn = createUpperTabButton("VideoTabBtn", "Video")
+local tabUiBtn = createUpperTabButton("UiTabBtn", "UI")
+local tabGameBtn = createUpperTabButton("GameTabBtn", "Game")
+
+G2L["9d"] = Instance.new("Frame", G2L["95"]);
+G2L["9d"]["BorderSizePixel"] = 0;
+G2L["9d"]["BackgroundColor3"] = Color3.fromRGB(23, 25, 35);
+G2L["9d"]["Size"] = UDim2.new(1, 0, 0.83058, 0);
+G2L["9d"]["Position"] = UDim2.new(-0.001, 0, 0.16942, 0);
+G2L["9d"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["9d"]["Name"] = [[MainFrame]];
+G2L["9d"]["BackgroundTransparency"] = 1;
+
+local function createSubContentFrame(name)
+	local sf = Instance.new("ScrollingFrame", G2L["9d"])
+	sf.Name = name
+	sf.Visible = false
+	sf.Active = true
+	sf.BorderSizePixel = 0
+	sf.VerticalScrollBarInset = Enum.ScrollBarInset.Always
+	sf.BackgroundColor3 = Color3.fromRGB(86, 86, 128)
+	sf.AutomaticCanvasSize = Enum.AutomaticSize.Y
+	sf.Size = UDim2.new(1, 0, 1, 0)
+	sf.Position = UDim2.new(0, 0, 0, 0)
+	sf.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	sf.BackgroundTransparency = 1
+	
+	local layout = Instance.new("UIListLayout", sf)
+	layout.SortOrder = Enum.SortOrder.LayoutOrder
+	layout.Padding = UDim.new(0, 12)
+	
+	local pad = Instance.new("UIPadding", sf)
+	pad.PaddingTop = UDim.new(0, 10)
+	pad.PaddingBottom = UDim.new(0, 10)
+	pad.PaddingLeft = UDim.new(0, 12)
+	pad.PaddingRight = UDim.new(0, 12)
+	
+	return sf
+end
+
+local videoSubFrame = createSubContentFrame("VideoSubFrame")
+local uiSubFrame = createSubContentFrame("UiSubFrame")
+local gameSubFrame = createSubContentFrame("GameSubFrame")
+
+local THEME_SAVE_FILE = "KryptonAndroid_ThemeData.json"
+local currentThemeSeq = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))}
+
+local themePresets = {
+	Default = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))},
+	Purple = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(180, 97, 255)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(90, 47, 123))},
+	Pink = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 97, 200)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(123, 47, 100))},
+	Blue = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 180, 255)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 90, 123))},
+	Red = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 97, 97)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(123, 47, 47))},
+	Orange = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 160, 97)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(123, 75, 47))}
+}
+
+local function saveThemeData(themeName)
+	pcall(function()
+		if writefile then
+			writefile(THEME_SAVE_FILE, HttpService:JSONEncode({theme = themeName}))
+		end
+	end)
+end
+
+local function applyTheme(colorSeq, saveName)
+	currentThemeSeq = colorSeq
+	if saveName then
+		saveThemeData(saveName)
+	end
+	pcall(function()
+		for _, descendant in ipairs(screenGui:GetDescendants()) do
+			if descendant:IsA("UIGradient") and descendant.Name ~= "TabGradient" and descendant.Parent ~= robloxTopBarButton and descendant.Parent ~= G2L["37"] then
+				descendant.Color = colorSeq
+			end
+		end
+	end)
+end
+
+pcall(function()
+	if readfile and isfile and isfile(THEME_SAVE_FILE) then
+		local data = HttpService:JSONDecode(readfile(THEME_SAVE_FILE))
+		if data and data.theme and themePresets[data.theme] then
+			applyTheme(themePresets[data.theme], nil)
+		end
+	end
+end)
+
+screenGui.DescendantAdded:Connect(function(descendant)
+	if descendant:IsA("UIGradient") and descendant.Name ~= "TabGradient" and descendant.Parent ~= robloxTopBarButton and descendant.Parent ~= G2L["37"] then
+		descendant.Color = currentThemeSeq
+	end
+end)
+
+local function createIPhoneToggle(parent, titleText, initialValue, callback)
+	local card = Instance.new("Frame", parent)
+	card.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+	card.BorderSizePixel = 0
+	card.Size = UDim2.new(1, 0, 0, 60)
+	
+	local corner = Instance.new("UICorner", card)
+	corner.CornerRadius = UDim.new(0.2, 0)
+	
+	local title = Instance.new("TextLabel", card)
+	title.BackgroundTransparency = 1
+	title.Position = UDim2.new(0.04, 0, 0.2, 0)
+	title.Size = UDim2.new(0.65, 0, 0.6, 0)
+	title.Font = Enum.Font.SourceSansBold
+	title.Text = titleText
+	title.TextColor3 = Color3.fromRGB(255, 255, 255)
+	title.TextSize = 15
+	title.TextXAlignment = Enum.TextXAlignment.Left
+	
+	local toggleBtn = Instance.new("TextButton", card)
+	toggleBtn.BackgroundColor3 = initialValue and Color3.fromRGB(48, 209, 88) or Color3.fromRGB(55, 58, 68)
+	toggleBtn.BorderSizePixel = 0
+	toggleBtn.Position = UDim2.new(0.85, 0, 0.3, 0)
+	toggleBtn.Size = UDim2.new(0, 50, 0, 26)
+	toggleBtn.AutoButtonColor = false
+	toggleBtn.Text = ""
+	
+	local tCorner = Instance.new("UICorner", toggleBtn)
+	tCorner.CornerRadius = UDim.new(1, 0)
+	
+	local knob = Instance.new("Frame", toggleBtn)
+	knob.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	knob.BorderSizePixel = 0
+	knob.Size = UDim2.new(0, 22, 0, 22)
+	knob.Position = initialValue and UDim2.new(1, -24, 0.5, -11) or UDim2.new(0, 2, 0.5, -11)
+	
+	local kCorner = Instance.new("UICorner", knob)
+	kCorner.CornerRadius = UDim.new(1, 0)
+	
+	local state = initialValue
+	toggleBtn.MouseButton1Click:Connect(function()
+		state = not state
+		local targetPos = state and UDim2.new(1, -24, 0.5, -11) or UDim2.new(0, 2, 0.5, -11)
+		local targetColor = state and Color3.fromRGB(48, 209, 88) or Color3.fromRGB(55, 58, 68)
+		
+		TweenService:Create(knob, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {Position = targetPos}):Play()
+		TweenService:Create(toggleBtn, TweenInfo.new(0.15, Enum.EasingStyle.Quad), {BackgroundColor3 = targetColor}):Play()
+		
+		pcall(function() callback(state) end)
+	end)
+	
+	return card
+end
+
+local fpsCard = Instance.new("Frame", videoSubFrame)
+fpsCard.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+fpsCard.BorderSizePixel = 0
+fpsCard.Size = UDim2.new(1, 0, 0, 60)
+local fpsCorner = Instance.new("UICorner", fpsCard)
+fpsCorner.CornerRadius = UDim.new(0.2, 0)
+
+local fpsTitle = Instance.new("TextLabel", fpsCard)
+fpsTitle.BackgroundTransparency = 1
+fpsTitle.Position = UDim2.new(0.04, 0, 0.2, 0)
+fpsTitle.Size = UDim2.new(0.6, 0, 0.6, 0)
+fpsTitle.Font = Enum.Font.SourceSansBold
+fpsTitle.Text = "FPS Limit"
+fpsTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+fpsTitle.TextSize = 15
+fpsTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+local fpsTextBox = Instance.new("TextBox", fpsCard)
+fpsTextBox.BackgroundColor3 = Color3.fromRGB(25, 28, 38)
+fpsTextBox.BorderSizePixel = 0
+fpsTextBox.Position = UDim2.new(0.78, 0, 0.2, 0)
+fpsTextBox.Size = UDim2.new(0.18, 0, 0.6, 0)
+fpsTextBox.Font = Enum.Font.SourceSansBold
+fpsTextBox.PlaceholderText = "60"
+fpsTextBox.Text = "60"
+fpsTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+fpsTextBox.TextSize = 14
+fpsTextBox.ClearTextOnFocus = false
+local fpsBoxCorner = Instance.new("UICorner", fpsTextBox)
+fpsBoxCorner.CornerRadius = UDim.new(0.3, 0)
+
+fpsTextBox.FocusLost:Connect(function()
+	local val = tonumber(fpsTextBox.Text)
+	if val and val > 0 then
+		pcall(function()
+			if setfpscap then setfpscap(val) end
+		end)
+	else
+		fpsTextBox.Text = "60"
+	end
+end)
+
+local originalTextures = {}
+createIPhoneToggle(videoSubFrame, "Potato Mode (Disable Textures)", false, function(state)
+	pcall(function()
+		if state then
+			originalTextures = {}
+			for _, obj in ipairs(workspace:GetDescendants()) do
+				if obj:IsA("Texture") or obj:IsA("Decal") then
+					originalTextures[obj] = {Transparency = obj.Transparency}
+					obj.Transparency = 1
+				elseif obj:IsA("BasePart") then
+					originalTextures[obj] = {Material = obj.Material}
+					obj.Material = Enum.Material.SmoothPlastic
+				end
+			end
+		else
+			for obj, data in pairs(originalTextures) do
+				if obj and obj.Parent then
+					if obj:IsA("Texture") or obj:IsA("Decal") then
+						obj.Transparency = data.Transparency or 0
+					elseif obj:IsA("BasePart") then
+						obj.Material = data.Material or Enum.Material.Plastic
+					end
+				end
+			end
+			originalTextures = {}
+		end
+	end)
+end)
+
+createIPhoneToggle(videoSubFrame, "Disable Roblox UI (Chat, etc)", false, function(state)
+	pcall(function()
+		StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, not state)
+		StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, not state)
+		StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, not state)
+		StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.EmotesMenu, not state)
+	end)
+end)
+
+local soonCard = Instance.new("Frame", videoSubFrame)
+soonCard.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+soonCard.BorderSizePixel = 0
+soonCard.Size = UDim2.new(1, 0, 0, 50)
+local soonCorner = Instance.new("UICorner", soonCard)
+soonCorner.CornerRadius = UDim.new(0.2, 0)
+
+local soonText = Instance.new("TextLabel", soonCard)
+soonText.BackgroundTransparency = 1
+soonText.Size = UDim2.new(1, 0, 1, 0)
+soonText.Font = Enum.Font.SourceSansItalic
+soonText.Text = "New features soon!"
+soonText.TextColor3 = Color3.fromRGB(140, 145, 160)
+soonText.TextSize = 14
+
+createIPhoneToggle(uiSubFrame, "Disable Draggable Icon", false, function(state)
+	draggableEnabled = not state
+end)
+
+local bringBackCard = Instance.new("Frame", uiSubFrame)
+bringBackCard.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+bringBackCard.BorderSizePixel = 0
+bringBackCard.Size = UDim2.new(1, 0, 0, 60)
+local bringCorner = Instance.new("UICorner", bringBackCard)
+bringCorner.CornerRadius = UDim.new(0.2, 0)
+
+local bringTitle = Instance.new("TextLabel", bringBackCard)
+bringTitle.BackgroundTransparency = 1
+bringTitle.Position = UDim2.new(0.04, 0, 0.2, 0)
+bringTitle.Size = UDim2.new(0.6, 0, 0.6, 0)
+bringTitle.Font = Enum.Font.SourceSansBold
+bringTitle.Text = "Bring Back Icon"
+bringTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+bringTitle.TextSize = 15
+bringTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+local bringBtn = Instance.new("TextButton", bringBackCard)
+bringBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+bringBtn.BorderSizePixel = 0
+bringBtn.Position = UDim2.new(0.75, 0, 0.2, 0)
+bringBtn.Size = UDim2.new(0.21, 0, 0.6, 0)
+bringBtn.AutoButtonColor = false
+bringBtn.Text = "Show"
+bringBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+bringBtn.Font = Enum.Font.SourceSansBold
+bringBtn.TextSize = 13
+local bBtnCorner = Instance.new("UICorner", bringBtn)
+bBtnCorner.CornerRadius = UDim.new(0.3, 0)
+local bBtnGrad = Instance.new("UIGradient", bringBtn)
+bBtnGrad.Rotation = 90
+bBtnGrad.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))}
+
+bringBtn.MouseButton1Click:Connect(function()
+	robloxTopBarButton.Visible = true
+	robloxTopBarButton.Position = UDim2.new(0.5, 0, 0, 10)
+end)
+
+local colorCard = Instance.new("Frame", uiSubFrame)
+colorCard.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+colorCard.BorderSizePixel = 0
+colorCard.Size = UDim2.new(1, 0, 0, 110)
+local colorCorner = Instance.new("UICorner", colorCard)
+colorCorner.CornerRadius = UDim.new(0.15, 0)
+
+local colorTitle = Instance.new("TextLabel", colorCard)
+colorTitle.BackgroundTransparency = 1
+colorTitle.Position = UDim2.new(0.04, 0, 0.08, 0)
+colorTitle.Size = UDim2.new(0.9, 0, 0.3, 0)
+colorTitle.Font = Enum.Font.SourceSansBold
+colorTitle.Text = "Theme Color"
+colorTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+colorTitle.TextSize = 15
+colorTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+local colorGrid = Instance.new("Frame", colorCard)
+colorGrid.BackgroundTransparency = 1
+colorGrid.Position = UDim2.new(0.04, 0, 0.42, 0)
+colorGrid.Size = UDim2.new(0.92, 0, 0.5, 0)
+
+local colorLayout = Instance.new("UIListLayout", colorGrid)
+colorLayout.FillDirection = Enum.FillDirection.Horizontal
+colorLayout.SortOrder = Enum.SortOrder.LayoutOrder
+colorLayout.Padding = UDim.new(0, 6)
+
+local themeDataList = {
+	{Name = "Default", Key = "Default", Color = themePresets.Default},
+	{Name = "Purple", Key = "Purple", Color = themePresets.Purple},
+	{Name = "Pink", Key = "Pink", Color = themePresets.Pink},
+	{Name = "Blue", Key = "Blue", Color = themePresets.Blue},
+	{Name = "Red", Key = "Red", Color = themePresets.Red},
+	{Name = "Orange", Key = "Orange", Color = themePresets.Orange}
+}
+
+for _, tInfo in ipairs(themeDataList) do
+	local colBtn = Instance.new("TextButton", colorGrid)
+	colBtn.Size = UDim2.new(0.15, -5, 0.8, 0)
+	colBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	colBtn.BorderSizePixel = 0
+	colBtn.AutoButtonColor = false
+	colBtn.Text = tInfo.Name:sub(1,3)
+	colBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+	colBtn.Font = Enum.Font.SourceSansBold
+	colBtn.TextSize = 11
+	
+	local cCorner = Instance.new("UICorner", colBtn)
+	cCorner.CornerRadius = UDim.new(0.3, 0)
+	
+	local cGrad = Instance.new("UIGradient", colBtn)
+	cGrad.Rotation = 90
+	cGrad.Color = tInfo.Color
+	
+	colBtn.MouseButton1Click:Connect(function()
+		applyTheme(tInfo.Color, tInfo.Key)
+	end)
+end
+
+local function createGameActionCard(titleText, buttonText, callback)
+	local card = Instance.new("Frame", gameSubFrame)
+	card.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+	card.BorderSizePixel = 0
+	card.Size = UDim2.new(1, 0, 0, 60)
+	local corner = Instance.new("UICorner", card)
+	corner.CornerRadius = UDim.new(0.2, 0)
+	
+	local title = Instance.new("TextLabel", card)
+	title.BackgroundTransparency = 1
+	title.Position = UDim2.new(0.04, 0, 0.2, 0)
+	title.Size = UDim2.new(0.6, 0, 0.6, 0)
+	title.Font = Enum.Font.SourceSansBold
+	title.Text = titleText
+	title.TextColor3 = Color3.fromRGB(255, 255, 255)
+	title.TextSize = 15
+	title.TextXAlignment = Enum.TextXAlignment.Left
+	
+	local actBtn = Instance.new("TextButton", card)
+	actBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	actBtn.BorderSizePixel = 0
+	actBtn.Position = UDim2.new(0.72, 0, 0.2, 0)
+	actBtn.Size = UDim2.new(0.24, 0, 0.6, 0)
+	actBtn.AutoButtonColor = false
+	actBtn.Text = buttonText
+	actBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+	actBtn.Font = Enum.Font.SourceSansBold
+	actBtn.TextSize = 13
+	local aCorner = Instance.new("UICorner", actBtn)
+	aCorner.CornerRadius = UDim.new(0.3, 0)
+	local aGrad = Instance.new("UIGradient", actBtn)
+	aGrad.Rotation = 90
+	aGrad.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))}
+	
+	actBtn.MouseButton1Click:Connect(callback)
+end
+
+createGameActionCard("Oof Yourself", "Oof", function()
+	pcall(function()
+		LocalPlayer.Character.Humanoid.Health = 0
+	end)
+end)
+
+createGameActionCard("Kick Yourself", "Kick", function()
+	pcall(function()
+		LocalPlayer:Kick("Manually kicked via Krypton Android")
+	end)
+end)
+
+createGameActionCard("Rejoin Game", "Rejoin", function()
+	pcall(function()
+		TeleportService:Teleport(game.PlaceId, LocalPlayer)
+	end)
+end)
+
+createGameActionCard("Serverhop (High Players)", "Hop High", function()
+	pcall(function()
+		local servers = {}
+		local req = game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Desc&limit=100")
+		local data = HttpService:JSONDecode(req)
+		if data and data.data then
+			for _, s in ipairs(data.data) do
+				if type(s) == "table" and s.maxPlayers and s.playing and s.id ~= game.JobId then
+					if s.playing < s.maxPlayers then
+						table.insert(servers, s.id)
+					end
+				end
+			end
+		end
+		if #servers > 0 then
+			TeleportService:TeleportToPlaceInstance(game.PlaceId, servers[math.random(1, #servers)], LocalPlayer)
+		end
+	end)
+end)
+
+createGameActionCard("Serverhop (Low Players)", "Hop Low", function()
+	pcall(function()
+		local servers = {}
+		local req = game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100")
+		local data = HttpService:JSONDecode(req)
+		if data and data.data then
+			for _, s in ipairs(data.data) do
+				if type(s) == "table" and s.maxPlayers and s.playing and s.id ~= game.JobId then
+					table.insert(servers, s.id)
+				end
+			end
+		end
+		if #servers > 0 then
+			TeleportService:TeleportToPlaceInstance(game.PlaceId, servers[1], LocalPlayer)
+		end
+	end)
+end)
+
+local function switchSettingsTab(activeSubFrame, activeTabBtn)
+	videoSubFrame.Visible = false
+	uiSubFrame.Visible = false
+	gameSubFrame.Visible = false
+	
+	tabVideoBtn.TextColor3 = Color3.fromRGB(140, 145, 160)
+	tabVideoBtn.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+	tabVideoBtn:FindFirstChild("TabGradient").Enabled = false
+	
+	tabUiBtn.TextColor3 = Color3.fromRGB(140, 145, 160)
+	tabUiBtn.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+	tabUiBtn:FindFirstChild("TabGradient").Enabled = false
+	
+	tabGameBtn.TextColor3 = Color3.fromRGB(140, 145, 160)
+	tabGameBtn.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+	tabGameBtn:FindFirstChild("TabGradient").Enabled = false
+	
+	activeSubFrame.Visible = true
+	activeTabBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+	activeTabBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	activeTabBtn:FindFirstChild("TabGradient").Enabled = true
+end
+
+tabVideoBtn.MouseButton1Click:Connect(function()
+	switchSettingsTab(videoSubFrame, tabVideoBtn)
+end)
+
+tabUiBtn.MouseButton1Click:Connect(function()
+	switchSettingsTab(uiSubFrame, tabUiBtn)
+end)
+
+tabGameBtn.MouseButton1Click:Connect(function()
+	switchSettingsTab(gameSubFrame, tabGameBtn)
+end)
+
+switchSettingsTab(videoSubFrame, tabVideoBtn)
+
+G2L["c8"] = Instance.new("Frame", G2L["1e"]);
+G2L["c8"]["Visible"] = false;
+G2L["c8"]["BorderSizePixel"] = 0;
+G2L["c8"]["BackgroundColor3"] = Color3.fromRGB(23, 25, 35);
+G2L["c8"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["c8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["c8"]["Name"] = [[Save]];
+G2L["c8"]["BackgroundTransparency"] = 1;
+
+G2L["107"] = Instance.new("Frame", G2L["1e"]);
+G2L["107"]["BorderSizePixel"] = 0;
+G2L["107"]["BackgroundColor3"] = Color3.fromRGB(23, 25, 35);
+G2L["107"]["Size"] = UDim2.new(1, 0, 1, 0);
+G2L["107"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["107"]["Name"] = [[Home]];
+G2L["107"]["BackgroundTransparency"] = 0;
+
+local homePageContainer = G2L["107"]
+
+local homeBgCorner = Instance.new("UICorner", homePageContainer)
+homeBgCorner.CornerRadius = UDim.new(0.04874, 0)
+
+local profileCard = Instance.new("Frame", homePageContainer)
+profileCard.Name = "ProfileCard"
+profileCard.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+profileCard.BorderSizePixel = 0
+profileCard.Position = UDim2.new(0.03, 0, 0.05, 0)
+profileCard.Size = UDim2.new(0.45, 0, 0.16, 0)
+
+local cardCorner = Instance.new("UICorner", profileCard)
+cardCorner.CornerRadius = UDim.new(0.2, 0)
+
+local profileIconBg = Instance.new("Frame", profileCard)
+profileIconBg.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+profileIconBg.BorderSizePixel = 0
+profileIconBg.Position = UDim2.new(0.05, 0, 0.2, 0)
+profileIconBg.Size = UDim2.new(0, 42, 0, 42)
+
+local iconCorner = Instance.new("UICorner", profileIconBg)
+iconCorner.CornerRadius = UDim.new(0.25, 0)
+
+local iconGradient = Instance.new("UIGradient", profileIconBg)
+iconGradient.Rotation = 90
+iconGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))}
+
+local profileLogoImg = Instance.new("ImageLabel", profileIconBg)
+profileLogoImg.BackgroundTransparency = 1
+profileLogoImg.Position = UDim2.new(0.2, 0, 0.2, 0)
+profileLogoImg.Size = UDim2.new(0.6, 0, 0.6, 0)
+profileLogoImg.Image = [[rbxassetid://117476884780822]]
+profileLogoImg.ImageColor3 = Color3.fromRGB(0, 0, 0)
+
+local displayNameLabel = Instance.new("TextLabel", profileCard)
+displayNameLabel.Name = "DisplayName"
+displayNameLabel.BackgroundTransparency = 1
+displayNameLabel.Position = UDim2.new(0.26, 0, 0.18, 0)
+displayNameLabel.Size = UDim2.new(0.35, 0, 0.35, 0)
+displayNameLabel.Font = Enum.Font.SourceSansBold
+displayNameLabel.Text = LocalPlayer.DisplayName
+displayNameLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+displayNameLabel.TextSize = 18
+displayNameLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+local usernameLabel = Instance.new("TextLabel", profileCard)
+usernameLabel.Name = "Username"
+usernameLabel.BackgroundTransparency = 1
+usernameLabel.Position = UDim2.new(0.26, 0, 0.52, 0)
+usernameLabel.Size = UDim2.new(0.35, 0, 0.3, 0)
+usernameLabel.Font = Enum.Font.SourceSans
+usernameLabel.Text = "@" .. LocalPlayer.Name
+usernameLabel.TextColor3 = Color3.fromRGB(140, 145, 160)
+usernameLabel.TextSize = 14
+usernameLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+local keyCard = Instance.new("Frame", homePageContainer)
+keyCard.Name = "KeyCard"
+keyCard.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+keyCard.BorderSizePixel = 0
+keyCard.Position = UDim2.new(0.50, 0, 0.05, 0)
+keyCard.Size = UDim2.new(0.47, 0, 0.16, 0)
+
+local keyCardCorner = Instance.new("UICorner", keyCard)
+keyCardCorner.CornerRadius = UDim.new(0.2, 0)
+
+local keyStatusLabel = Instance.new("TextLabel", keyCard)
+keyStatusLabel.Name = "KeyStatus"
+keyStatusLabel.BackgroundTransparency = 1
+keyStatusLabel.Position = UDim2.new(0.08, 0, 0.18, 0)
+keyStatusLabel.Size = UDim2.new(0.85, 0, 0.35, 0)
+keyStatusLabel.Font = Enum.Font.SourceSansBold
+keyStatusLabel.Text = "Key lasting : Forever"
+keyStatusLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+keyStatusLabel.TextSize = 15
+keyStatusLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+local keyIdLabel = Instance.new("TextLabel", keyCard)
+keyIdLabel.Name = "KeyId"
+keyIdLabel.BackgroundTransparency = 1
+keyIdLabel.Position = UDim2.new(0.08, 0, 0.52, 0)
+keyIdLabel.Size = UDim2.new(0.85, 0, 0.3, 0)
+keyIdLabel.Font = Enum.Font.SourceSans
+keyIdLabel.Text = "Key id : KryptonForever"
+keyIdLabel.TextColor3 = Color3.fromRGB(140, 145, 160)
+keyIdLabel.TextSize = 13
+keyIdLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+local divider = Instance.new("Frame", homePageContainer)
+divider.Name = "Divider"
+divider.BackgroundColor3 = Color3.fromRGB(35, 38, 48)
+divider.BorderSizePixel = 0
+divider.Position = UDim2.new(0.03, 0, 0.24, 0)
+divider.Size = UDim2.new(0.94, 0, 0, 2)
+
+local switchPage
+
+local featuredContainerBox = Instance.new("Frame", homePageContainer)
+featuredContainerBox.Name = "FeaturedContainerBox"
+featuredContainerBox.BackgroundColor3 = Color3.fromRGB(15, 17, 23)
+featuredContainerBox.BorderSizePixel = 0
+featuredContainerBox.Position = UDim2.new(0.03, 0, 0.27, 0)
+featuredContainerBox.Size = UDim2.new(0.45, 0, 0.7, 0)
+
+local containerBoxCorner = Instance.new("UICorner", featuredContainerBox)
+containerBoxCorner.CornerRadius = UDim.new(0.08, 0)
+
+local featuredTitle = Instance.new("TextLabel", featuredContainerBox)
+featuredTitle.Name = "FeaturedTitle"
+featuredTitle.BackgroundTransparency = 1
+featuredTitle.Position = UDim2.new(0.06, 0, 0.05, 0)
+featuredTitle.Size = UDim2.new(0.85, 0, 0.1, 0)
+featuredTitle.Font = Enum.Font.SourceSansBold
+featuredTitle.Text = "Featured Scripts"
+featuredTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+featuredTitle.TextSize = 16
+featuredTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+local function createFeaturedCard(posY, scriptName, scriptUrl)
+	local card = Instance.new("Frame", featuredContainerBox)
+	card.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+	card.BorderSizePixel = 0
+	card.Position = UDim2.new(0.05, 0, posY, 0)
+	card.Size = UDim2.new(0.9, 0, 0.2, 0)
+	
+	local corner = Instance.new("UICorner", card)
+	corner.CornerRadius = UDim.new(0.2, 0)
+	
+	local title = Instance.new("TextLabel", card)
+	title.BackgroundTransparency = 1
+	title.Position = UDim2.new(0.06, 0, 0.2, 0)
+	title.Size = UDim2.new(0.55, 0, 0.6, 0)
+	title.Font = Enum.Font.SourceSansBold
+	title.Text = scriptName
+	title.TextColor3 = Color3.fromRGB(255, 255, 255)
+	title.TextSize = 15
+	title.TextXAlignment = Enum.TextXAlignment.Left
+	
+	local runBtn = Instance.new("TextButton", card)
+	runBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	runBtn.BorderSizePixel = 0
+	runBtn.Position = UDim2.new(0.68, 0, 0.22, 0)
+	runBtn.Size = UDim2.new(0.27, 0, 0.56, 0)
+	runBtn.AutoButtonColor = false
+	runBtn.Text = "RUN"
+	runBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+	runBtn.Font = Enum.Font.SourceSansBold
+	runBtn.TextSize = 13
+	
+	local btnCorner = Instance.new("UICorner", runBtn)
+	btnCorner.CornerRadius = UDim.new(0.3, 0)
+	
+	local btnGrad = Instance.new("UIGradient", runBtn)
+	btnGrad.Rotation = 90
+	btnGrad.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))}
+	
+	runBtn.MouseButton1Click:Connect(function()
+		task.spawn(function()
+			pcall(function()
+				loadstring(game:HttpGet(scriptUrl))()
+			end)
+		end)
+	end)
+end
+
+createFeaturedCard(0.18, "Infinite Yield", "https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source")
+createFeaturedCard(0.41, "Moon ' s dex", "https://gist.githubusercontent.com/DarkraiWHub/6d61f71a938c8dfd83d47f9999496a75/raw/dex.lua")
+
+local quickActionsBox = Instance.new("Frame", homePageContainer)
+quickActionsBox.Name = "QuickActionsBox"
+quickActionsBox.BackgroundColor3 = Color3.fromRGB(15, 17, 23)
+quickActionsBox.BorderSizePixel = 0
+quickActionsBox.Position = UDim2.new(0.50, 0, 0.27, 0)
+quickActionsBox.Size = UDim2.new(0.47, 0, 0.7, 0)
+
+local quickCorner = Instance.new("UICorner", quickActionsBox)
+quickCorner.CornerRadius = UDim.new(0.08, 0)
+
+local quickTitle = Instance.new("TextLabel", quickActionsBox)
+quickTitle.Name = "QuickTitle"
+quickTitle.BackgroundTransparency = 1
+quickTitle.Position = UDim2.new(0.06, 0, 0.05, 0)
+quickTitle.Size = UDim2.new(0.85, 0, 0.1, 0)
+quickTitle.Font = Enum.Font.SourceSansBold
+quickTitle.Text = "Quick Actions"
+quickTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+quickTitle.TextSize = 16
+quickTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+local function createQuickActionRow(posY, labelText, callback)
+	local row = Instance.new("Frame", quickActionsBox)
+	row.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+	row.BorderSizePixel = 0
+	row.Position = UDim2.new(0.05, 0, posY, 0)
+	row.Size = UDim2.new(0.9, 0, 0.2, 0)
+	
+	local rCorner = Instance.new("UICorner", row)
+	rCorner.CornerRadius = UDim.new(0.2, 0)
+	
+	local label = Instance.new("TextLabel", row)
+	label.BackgroundTransparency = 1
+	label.Position = UDim2.new(0.06, 0, 0.2, 0)
+	label.Size = UDim2.new(0.55, 0, 0.6, 0)
+	label.Font = Enum.Font.SourceSansBold
+	label.Text = labelText
+	label.TextColor3 = Color3.fromRGB(255, 255, 255)
+	label.TextSize = 14
+	label.TextXAlignment = Enum.TextXAlignment.Left
+	
+	local goBtn = Instance.new("TextButton", row)
+	goBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	goBtn.BorderSizePixel = 0
+	goBtn.Position = UDim2.new(0.68, 0, 0.2, 0)
+	goBtn.Size = UDim2.new(0.27, 0, 0.6, 0)
+	goBtn.AutoButtonColor = false
+	goBtn.Text = "Go"
+	goBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+	goBtn.Font = Enum.Font.SourceSansBold
+	goBtn.TextSize = 13
+	
+	local bCorner = Instance.new("UICorner", goBtn)
+	bCorner.CornerRadius = UDim.new(0.3, 0)
+	
+	local bGrad = Instance.new("UIGradient", goBtn)
+	bGrad.Rotation = 90
+	bGrad.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))}
+	
+	goBtn.MouseButton1Click:Connect(callback)
+end
+
+createQuickActionRow(0.18, "Go to editor", function()
+	if switchPage then switchPage("Executor") end
+end)
+
+createQuickActionRow(0.41, "Go to cloud", function()
+	if switchPage then switchPage("Cloud") end
+end)
+
+createQuickActionRow(0.64, "Go to settings", function()
+	if switchPage then switchPage("Settings") end
+end)
+
+local tweenInfo = TweenInfo.new(0.12, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+
+local homeIndicator = G2L["5"]
+local homeBtn = G2L["b"]
+
+local codeIndicator = G2L["c"]
+local codeBtn = G2L["11"]
+
+local cloudIndicator = G2L["12"]
+local cloudBtn = G2L["1c"]
+
+local settingsIndicator = G2L["17"]
+local settingBtn = G2L["1d"]
+
+local mainBgFrame = G2L["3"]
+local mainFrameContainer = G2L["1e"]
+local homePage = mainFrameContainer:WaitForChild("Home")
+local executorPage = mainFrameContainer:WaitForChild("Executor")
+local cloudPage = mainFrameContainer:WaitForChild("Cloud")
+local settingsPage = mainFrameContainer:WaitForChild("Settings")
+local savePage = mainFrameContainer:WaitForChild("Save")
+
+local pages = {
+	Home = homePage,
+	Executor = executorPage,
+	Cloud = cloudPage,
+	Settings = settingsPage,
+	Save = savePage
+}
+
+local indicators = {
+	Home = homeIndicator,
+	Executor = codeIndicator,
+	Cloud = cloudIndicator,
+	Settings = settingsIndicator
+}
+
+local buttons = {
+	Home = homeBtn,
+	Executor = codeBtn,
+	Cloud = cloudBtn,
+	Settings = settingBtn
+}
+
+local isSwitching = false
+
+switchPage = function(pageName)
+	if isSwitching then return end
+	isSwitching = true
+
+	for name, page in pairs(pages) do
+		if name == pageName then
+			page.Visible = true
+			page.Position = UDim2.new(0, 0, -1, 0)
+			TweenService:Create(page, tweenInfo, {Position = UDim2.new(0, 0, 0, 0)}):Play()
+		else
+			if page.Visible then
+				local oldPage = page
+				TweenService:Create(oldPage, tweenInfo, {Position = UDim2.new(0, 0, 1, 0)}):Play()
+				task.delay(0.12, function()
+					if oldPage.Position == UDim2.new(0, 0, 1, 0) then
+						oldPage.Visible = false
+					end
+				end)
+			end
+		end
+	end
+
+	for name, indicator in pairs(indicators) do
+		indicator.Visible = (name == pageName)
+	end
+
+	for name, btn in pairs(buttons) do
+		btn.Visible = (name ~= pageName)
+	end
+	
+	task.delay(0.15, function()
+		isSwitching = false
+	end)
+end
+
+for _, page in pairs(pages) do
+	page.Visible = false
+	page.Position = UDim2.new(0, 0, 1, 0)
+end
+homePage.Visible = true
+homePage.Position = UDim2.new(0, 0, 0, 0)
+
+homeIndicator.Visible = true
+codeIndicator.Visible = false
+cloudIndicator.Visible = false
+settingsIndicator.Visible = false
+
+homeBtn.Visible = false
+codeBtn.Visible = true
+cloudBtn.Visible = true
+settingBtn.Visible = true
+
+homeBtn.MouseButton1Click:Connect(function() switchPage("Home") end)
+codeBtn.MouseButton1Click:Connect(function() switchPage("Executor") end)
+cloudBtn.MouseButton1Click:Connect(function() switchPage("Cloud") end)
+settingBtn.MouseButton1Click:Connect(function() switchPage("Settings") end)
+
+local uiVisible = true
+local function toggleMainUI()
+	uiVisible = not uiVisible
+	mainBgFrame.Visible = uiVisible
+end
+
+local brandLogoBtn = G2L["a"]
+brandLogoBtn.MouseButton1Click:Connect(toggleMainUI)
+robloxTopBarButton.MouseButton1Click:Connect(function()
+	if not isDraggingAction then
+		toggleMainUI()
+	end
+end)
+
+local runBtn = G2L["39"]
+local editor = G2L["36"]
+runBtn.MouseButton1Click:Connect(function()
+	task.spawn(function()
+		local success, err = pcall(function()
+			local codeFunc = loadstring(editor.Text)
+			if codeFunc then
+				codeFunc()
+			end
+		end)
+		if not success then
+			warn("Krypton Android Execution Error: ", err)
+		end
+	end)
+end)
+
+local clearBtn = G2L["3e"]
+clearBtn.MouseButton1Click:Connect(function()
+	editor.Text = ""
+end)
+
+local tabsScrollingFrame = G2L["22"]
+local addTabBtn = G2L["2a"]
+local originalTab = G2L["23"]
+
+local SAVE_FILE_NAME = "KryptonAndroid_TabsData.json"
+local tabs = {}
+local activeTab = nil
+
+local function saveTabsData()
+	pcall(function()
+		if writefile then
+			local saveData = {}
+			for _, t in ipairs(tabs) do
+				table.insert(saveData, {
+					id = t.id,
+					name = t.name,
+					code = t.code
+				})
+			end
+			writefile(SAVE_FILE_NAME, HttpService:JSONEncode(saveData))
+		end
+	end)
+end
+
+local function loadTabsData()
+	local success, result = pcall(function()
+		if readfile and isfile and isfile(SAVE_FILE_NAME) then
+			return HttpService:JSONDecode(readfile(SAVE_FILE_NAME))
+		end
+	end)
+	if success and type(result) == "table" then
+		return result
+	end
+	return nil
+end
+
+local function switchTab(targetTab)
+	for _, t in ipairs(tabs) do
+		if t.button == targetTab then
+			activeTab = t.button
+			editorBox.Text = t.code or ""
+			t.button.BackgroundTransparency = 0
+			t.text.TextColor3 = Color3.fromRGB(255, 255, 255)
+			if t.close then
+				t.close.Visible = true
+			end
+		else
+			t.button.BackgroundTransparency = 1
+			t.text.TextColor3 = Color3.fromRGB(71, 88, 135)
+			if t.close then
+				t.close.Visible = false
+			end
+		end
+	end
+end
+
+editorBox:GetPropertyChangedSignal("Text"):Connect(function()
+	for _, t in ipairs(tabs) do
+		if t.button == activeTab then
+			t.code = editorBox.Text
+			saveTabsData()
+		end
+	end
+end)
+
+local function getLowestAvailableId()
+	local usedIds = {}
+	for _, t in ipairs(tabs) do
+		usedIds[t.id] = true
+	end
+	local id = 2
+	while usedIds[id] do
+		id = id + 1
+	end
+	return id
+end
+
+local function setupTabConnections(tabObj, isFirst)
+	tabObj.button.MouseButton1Click:Connect(function()
+		switchTab(tabObj.button)
+	end)
+	
+	if not isFirst and tabObj.close then
+		tabObj.close.MouseButton1Click:Connect(function()
+			if #tabs > 1 then
+				local indexToRemove = nil
+				for i, t in ipairs(tabs) do
+					if t.button == tabObj.button then
+						indexToRemove = i
+						break
+					end
+				end
+				if indexToRemove then
+					table.remove(tabs, indexToRemove)
+					tabObj.button:Destroy()
+					
+					for _, t in ipairs(tabs) do
+						if t.close then
+							t.close.Visible = (t.button == activeTab)
+						end
+					end
+					
+					if activeTab == tabObj.button and #tabs > 0 then
+						switchTab(tabs[1].button)
+					end
+					saveTabsData()
+				end
+			end
+		end)
+	end
+end
+
+local function createTabUI(id, tabName, codeContent, isFirst)
+	local clonedTab
+	if isFirst then
+		clonedTab = originalTab
+		local firstCloseBtn = clonedTab:FindFirstChild("CloseTab")
+		if firstCloseBtn then
+			firstCloseBtn:Destroy()
+		end
+	else
+		clonedTab = originalTab:Clone()
+		clonedTab.Name = "Tab_" .. id
+		clonedTab.BackgroundTransparency = 1
+		
+		local grad = clonedTab:FindFirstChildOfClass("UIGradient")
+		if not grad then
+			grad = G2L["27"]:Clone()
+			grad.Parent = clonedTab
+		end
+		
+		clonedTab.Parent = tabsScrollingFrame
+	end
+	
+	clonedTab.LayoutOrder = id
+	
+	local textLbl = clonedTab:WaitForChild("TextLabel")
+	local closeBtn = clonedTab:FindFirstChild("CloseTab")
+	
+	if not isFirst then
+		if not closeBtn then
+			closeBtn = Instance.new("ImageButton", clonedTab)
+			closeBtn.Name = "CloseTab"
+			closeBtn.BackgroundTransparency = 1
+			closeBtn.BorderSizePixel = 0
+			closeBtn.Size = UDim2.new(0.16821, 0, 0.4, 0)
+			closeBtn.Position = UDim2.new(0.73694, 0, 0.3, 0)
+			closeBtn.Image = "rbxassetid://80433169334469"
+			closeBtn.ImageColor3 = Color3.fromRGB(0, 0, 0)
+		end
+		closeBtn.Visible = false
+	else
+		closeBtn = nil
+	end
+	
+	textLbl.Text = tabName
+	textLbl.TextColor3 = isFirst and Color3.fromRGB(255, 255, 255) or Color3.fromRGB(71, 88, 135)
+	
+	local tabObj = {
+		id = id,
+		name = tabName,
+		button = clonedTab,
+		text = textLbl,
+		close = closeBtn,
+		code = codeContent or ""
+	}
+	
+	table.insert(tabs, tabObj)
+	setupTabConnections(tabObj, isFirst)
+	return tabObj
+end
+
+local function openNewTabWithScript(tabName, codeContent)
+	local newId = getLowestAvailableId()
+	local newTabObj = createTabUI(newId, tabName, codeContent, false)
+	switchTab(newTabObj.button)
+	saveTabsData()
+end
+
+local savedData = loadTabsData()
+if savedData and #savedData > 0 then
+	for i, tabInfo in ipairs(savedData) do
+		local isFirst = (i == 1)
+		if isFirst then
+			createTabUI(tabInfo.id or 1, tabInfo.name or "Tab.1", tabInfo.code or "", true)
+		else
+			createTabUI(tabInfo.id or i, tabInfo.name or ("Tab." .. tabInfo.id), tabInfo.code or "", false)
+		end
+	end
+	switchTab(tabs[1].button)
+else
+	createTabUI(1, "Tab.1", editorBox.Text, true)
+	switchTab(originalTab)
+end
+
+addTabBtn.MouseButton1Click:Connect(function()
+	local newId = getLowestAvailableId()
+	local tabName = "Tab." .. newId
+	local newTabObj = createTabUI(newId, tabName, "", false)
+	switchTab(newTabObj.button)
+	saveTabsData()
+end)
+
+local cloudScrollingFrame = G2L["52"]
+
+local function clearCloudResults()
+	for _, child in ipairs(cloudScrollingFrame:GetChildren()) do
+		if child:IsA("Frame") or child:IsA("TextLabel") then
+			child:Destroy()
+		end
+	end
+end
+
+local function addCloudScriptCard(titleText, rawScriptContent, providerName)
+	local card = Instance.new("Frame", cloudScrollingFrame)
+	card.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+	card.BorderSizePixel = 0
+	card.Size = UDim2.new(1, 0, 0, 95)
+	
+	local corner = Instance.new("UICorner", card)
+	corner.CornerRadius = UDim.new(0.15, 0)
+	
+	local thumbBg = Instance.new("Frame", card)
+	thumbBg.BackgroundColor3 = Color3.fromRGB(25, 28, 38)
+	thumbBg.BorderSizePixel = 0
+	thumbBg.Position = UDim2.new(0.02, 0, 0.12, 0)
+	thumbBg.Size = UDim2.new(0, 64, 0, 64)
+	
+	local thumbCorner = Instance.new("UICorner", thumbBg)
+	thumbCorner.CornerRadius = UDim.new(0.2, 0)
+	
+	local thumbImg = Instance.new("ImageLabel", thumbBg)
+	thumbImg.BackgroundTransparency = 1
+	thumbImg.Position = UDim2.new(0.1, 0, 0.1, 0)
+	thumbImg.Size = UDim2.new(0.8, 0, 0.8, 0)
+	thumbImg.ScaleType = Enum.ScaleType.Crop
+	
+	local assetId = "119192894795228"
+	if providerName == "HaxHell" then
+		assetId = "132689769013089"
+	elseif providerName == "Rscripts" then
+		assetId = "74172162015515"
+	elseif providerName == "ScriptBlox" then
+		assetId = "119192894795228"
+	end
+	
+	thumbImg.Image = "rbxassetid://" .. assetId
+	
+	local titleLbl = Instance.new("TextLabel", card)
+	titleLbl.BackgroundTransparency = 1
+	titleLbl.Position = UDim2.new(0.18, 0, 0.12, 0)
+	titleLbl.Size = UDim2.new(0.35, 0, 0.74, 0)
+	titleLbl.Font = Enum.Font.SourceSansBold
+	titleLbl.Text = titleText or "Untitled Script"
+	titleLbl.TextColor3 = Color3.fromRGB(255, 255, 255)
+	titleLbl.TextSize = 13
+	titleLbl.TextXAlignment = Enum.TextXAlignment.Left
+	titleLbl.TextYAlignment = Enum.TextYAlignment.Top
+	titleLbl.TextWrapped = true
+	
+	local openBtn = Instance.new("TextButton", card)
+	openBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	openBtn.BorderSizePixel = 0
+	openBtn.Position = UDim2.new(0.55, 0, 0.15, 0)
+	openBtn.Size = UDim2.new(0.43, 0, 0.33, 0)
+	openBtn.AutoButtonColor = false
+	openBtn.Text = "Open in Editor"
+	openBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+	openBtn.Font = Enum.Font.SourceSansBold
+	openBtn.TextSize = 12
+	local openCorner = Instance.new("UICorner", openBtn)
+	openCorner.CornerRadius = UDim.new(0.3, 0)
+	local openGrad = Instance.new("UIGradient", openBtn)
+	openGrad.Rotation = 90
+	openGrad.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))}
+	
+	local copyBtn = Instance.new("TextButton", card)
+	copyBtn.BackgroundColor3 = Color3.fromRGB(35, 39, 52)
+	copyBtn.BorderSizePixel = 0
+	copyBtn.Position = UDim2.new(0.55, 0, 0.53, 0)
+	copyBtn.Size = UDim2.new(0.43, 0, 0.33, 0)
+	copyBtn.AutoButtonColor = false
+	copyBtn.Text = "Copy"
+	copyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+	copyBtn.Font = Enum.Font.SourceSansBold
+	copyBtn.TextSize = 12
+	local copyCorner = Instance.new("UICorner", copyBtn)
+	copyCorner.CornerRadius = UDim.new(0.3, 0)
+	
+	openBtn.MouseButton1Click:Connect(function()
+		openNewTabWithScript(titleText or "Script", rawScriptContent or "-- No script content available")
+		switchPage("Executor")
+	end)
+	
+	copyBtn.MouseButton1Click:Connect(function()
+		pcall(function()
+			if setclipboard then
+				setclipboard(rawScriptContent or "")
+				copyBtn.Text = "Copied!"
+				task.delay(1.5, function()
+					copyBtn.Text = "Copy"
+				end)
+			end
+		end)
+	end)
+end
+
+local fetchCloudScriptsForProvider 
+local loadLocalScriptsData, saveLocalScriptsData, localScriptsCache
+
+local LOCAL_SCRIPTS_FILE = "KryptonAndroid_LocalCategories.json"
+localScriptsCache = { Saved = {}, Autoexec = {}, Favorites = {} }
+
+loadLocalScriptsData = function()
+	pcall(function()
+		if readfile and isfile and isfile(LOCAL_SCRIPTS_FILE) then
+			local decoded = HttpService:JSONDecode(readfile(LOCAL_SCRIPTS_FILE))
+			if type(decoded) == "table" then
+				localScriptsCache = decoded
+			end
+		end
+	end)
+	if not localScriptsCache.Saved then localScriptsCache.Saved = {} end
+	if not localScriptsCache.Autoexec then localScriptsCache.Autoexec = {} end
+	if not localScriptsCache.Favorites then localScriptsCache.Favorites = {} end
+	
+	local modified = false
+	for _, catName in ipairs({"Saved", "Autoexec", "Favorites"}) do
+		if localScriptsCache[catName] then
+			for _, item in ipairs(localScriptsCache[catName]) do
+				if not item.id then
+					item.id = tostring(tick()) .. "_" .. math.random(1000, 9999)
+					modified = true
+				end
+			end
+		end
+	end
+	if modified and writefile then
+		pcall(function()
+			writefile(LOCAL_SCRIPTS_FILE, HttpService:JSONEncode(localScriptsCache))
+		end)
+	end
+	
+	return localScriptsCache
+end
+
+saveLocalScriptsData = function()
+	pcall(function()
+		if writefile then
+			writefile(LOCAL_SCRIPTS_FILE, HttpService:JSONEncode(localScriptsCache))
+		end
+	end)
+end
+
+loadLocalScriptsData()
+
+local function addLocalScriptCard(titleText, rawScriptContent, categoryName, scriptId)
+	local card = Instance.new("Frame", cloudScrollingFrame)
+	card.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+	card.BorderSizePixel = 0
+	card.Size = UDim2.new(1, 0, 0, 95)
+	
+	local corner = Instance.new("UICorner", card)
+	corner.CornerRadius = UDim.new(0.15, 0)
+	
+	local thumbBg = Instance.new("Frame", card)
+	thumbBg.BackgroundColor3 = Color3.fromRGB(25, 28, 38)
+	thumbBg.BorderSizePixel = 0
+	thumbBg.Position = UDim2.new(0.02, 0, 0.12, 0)
+	thumbBg.Size = UDim2.new(0, 64, 0, 64)
+	
+	local thumbCorner = Instance.new("UICorner", thumbBg)
+	thumbCorner.CornerRadius = UDim.new(0.2, 0)
+	
+	local thumbImg = Instance.new("ImageLabel", thumbBg)
+	thumbImg.BackgroundTransparency = 1
+	thumbImg.Position = UDim2.new(0.1, 0, 0.1, 0)
+	thumbImg.Size = UDim2.new(0.8, 0, 0.8, 0)
+	thumbImg.ScaleType = Enum.ScaleType.Crop
+	thumbImg.Image = "rbxassetid://117476884780822"
+	
+	local titleLbl = Instance.new("TextLabel", card)
+	titleLbl.BackgroundTransparency = 1
+	titleLbl.Position = UDim2.new(0.18, 0, 0.12, 0)
+	titleLbl.Size = UDim2.new(0.35, 0, 0.74, 0)
+	titleLbl.Font = Enum.Font.SourceSansBold
+	titleLbl.Text = titleText or "Untitled Script"
+	titleLbl.TextColor3 = Color3.fromRGB(255, 255, 255)
+	titleLbl.TextSize = 13
+	titleLbl.TextXAlignment = Enum.TextXAlignment.Left
+	titleLbl.TextYAlignment = Enum.TextYAlignment.Top
+	titleLbl.TextWrapped = true
+	
+	local execBtn = Instance.new("TextButton", card)
+	execBtn.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	execBtn.BorderSizePixel = 0
+	execBtn.Position = UDim2.new(0.55, 0, 0.12, 0)
+	execBtn.Size = UDim2.new(0.21, 0, 0.35, 0)
+	execBtn.AutoButtonColor = false
+	execBtn.Text = "Execute"
+	execBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+	execBtn.Font = Enum.Font.SourceSansBold
+	execBtn.TextSize = 12
+	local execCorner = Instance.new("UICorner", execBtn)
+	execCorner.CornerRadius = UDim.new(0.3, 0)
+	local execGrad = Instance.new("UIGradient", execBtn)
+	execGrad.Rotation = 90
+	execGrad.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(97, 255, 169)), ColorSequenceKeypoint.new(1.000, Color3.fromRGB(47, 123, 81))}
+	
+	local openBtn = Instance.new("TextButton", card)
+	openBtn.BackgroundColor3 = Color3.fromRGB(35, 39, 52)
+	openBtn.BorderSizePixel = 0
+	openBtn.Position = UDim2.new(0.78, 0, 0.12, 0)
+	openBtn.Size = UDim2.new(0.20, 0, 0.35, 0)
+	openBtn.AutoButtonColor = false
+	openBtn.Text = "Open"
+	openBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+	openBtn.Font = Enum.Font.SourceSansBold
+	openBtn.TextSize = 12
+	local openCorner = Instance.new("UICorner", openBtn)
+	openCorner.CornerRadius = UDim.new(0.3, 0)
+	
+	local copyBtn = Instance.new("TextButton", card)
+	copyBtn.BackgroundColor3 = Color3.fromRGB(35, 39, 52)
+	copyBtn.BorderSizePixel = 0
+	copyBtn.Position = UDim2.new(0.55, 0, 0.53, 0)
+	copyBtn.Size = UDim2.new(0.21, 0, 0.35, 0)
+	copyBtn.AutoButtonColor = false
+	copyBtn.Text = "Copy"
+	copyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+	copyBtn.Font = Enum.Font.SourceSansBold
+	copyBtn.TextSize = 12
+	local copyCorner = Instance.new("UICorner", copyBtn)
+	copyCorner.CornerRadius = UDim.new(0.3, 0)
+	
+	local deleteBtn = Instance.new("TextButton", card)
+	deleteBtn.BackgroundColor3 = Color3.fromRGB(220, 80, 80)
+	deleteBtn.BorderSizePixel = 0
+	deleteBtn.Position = UDim2.new(0.78, 0, 0.53, 0)
+	deleteBtn.Size = UDim2.new(0.20, 0, 0.35, 0)
+	deleteBtn.AutoButtonColor = false
+	deleteBtn.Text = "Delete"
+	deleteBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+	deleteBtn.Font = Enum.Font.SourceSansBold
+	deleteBtn.TextSize = 12
+	local deleteCorner = Instance.new("UICorner", deleteBtn)
+	deleteCorner.CornerRadius = UDim.new(0.3, 0)
+	
+	execBtn.MouseButton1Click:Connect(function()
+		task.spawn(function()
+			pcall(function()
+				local f = loadstring(rawScriptContent or "")
+				if f then f() end
+			end)
+		end)
+	end)
+	
+	openBtn.MouseButton1Click:Connect(function()
+		openNewTabWithScript(titleText or "Script", rawScriptContent or "-- No script content available")
+		switchPage("Executor")
+	end)
+	
+	copyBtn.MouseButton1Click:Connect(function()
+		pcall(function()
+			if setclipboard then
+				setclipboard(rawScriptContent or "")
+				copyBtn.Text = "Copied!"
+				task.delay(1.5, function()
+					copyBtn.Text = "Copy"
+				end)
+			end
+		end)
+	end)
+	
+	deleteBtn.MouseButton1Click:Connect(function()
+		pcall(function()
+			local data = loadLocalScriptsData()
+			local list = data[categoryName]
+			if list then
+				for i = #list, 1, -1 do
+					if list[i].id == scriptId then
+						table.remove(list, i)
+						break
+					end
+				end
+				saveLocalScriptsData()
+				fetchCloudScriptsForProvider("Local", "")
+			end
+		end)
+	end)
+end
+
+local function fetchWebRequest(url)
+	local response
+	pcall(function()
+		if syn and syn.request then
+			local res = syn.request({ Url = url, Method = "GET" })
+			if res and res.Body then response = res.Body end
+		elseif http_request then
+			local res = http_request({ Url = url, Method = "GET" })
+			if res and res.Body then response = res.Body end
+		elseif request then
+			local res = request({ Url = url, Method = "GET" })
+			if res and res.Body then response = res.Body end
+		else
+			response = game:HttpGet(url)
+		end
+	end)
+	return response
+end
+
+local cloudTabsDataList = {
+	{Name = "Local", AssetId = "117476884780822", Provider = "Local", LayoutOrder = 1},
+	{Name = "ScriptBlox", AssetId = "119192894795228", Provider = "ScriptBlox", LayoutOrder = 2},
+	{Name = "Rscripts", AssetId = "74172162015515", Provider = "Rscripts", LayoutOrder = 3},
+	{Name = "HaxHell", AssetId = "132689769013089", Provider = "HaxHell", LayoutOrder = 4}
+}
+
+local activeCloudProvider = "Local"
+local activeLocalCategory = "Saved"
+local cloudTabButtons = {}
+local localSubTabButtons = {}
+
+local function updateCloudTabs()
+	for provider, btnData in pairs(cloudTabButtons) do
+		local isActive = (provider == activeCloudProvider)
+		local btn = btnData.Button
+		local textLbl = btnData.TextLabel
+		
+		if isActive then
+			TweenService:Create(btn, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {Size = UDim2.new(0, 95, 0, 34)}):Play()
+			btn.BackgroundColor3 = Color3.fromRGB(30, 34, 46)
+			textLbl.Visible = true
+		else
+			TweenService:Create(btn, TweenInfo.new(0.2, Enum.EasingStyle.Quad), {Size = UDim2.new(0, 34, 0, 34)}):Play()
+			btn.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+			textLbl.Visible = false
+		end
+	end
+	
+	if activeCloudProvider == "Local" then
+		cloudSearchContainer.Visible = false
+		localSubHeaderBar.Visible = true
+		TweenService:Create(G2L["50"], TweenInfo.new(0.2, Enum.EasingStyle.Quad), {Position = UDim2.new(0, 0, 0.28, 0), Size = UDim2.new(1, 0, 0.71, 0)}):Play()
+	else
+		cloudSearchContainer.Visible = true
+		localSubHeaderBar.Visible = false
+		TweenService:Create(G2L["50"], TweenInfo.new(0.2, Enum.EasingStyle.Quad), {Position = UDim2.new(0, 0, 0.28, 0), Size = UDim2.new(1, 0, 0.71, 0)}):Play()
+	end
+end
+
+local function updateLocalSubTabs()
+	for catName, btn in pairs(localSubTabButtons) do
+		local isActive = (catName == activeLocalCategory)
+		btn.BackgroundColor3 = isActive and Color3.fromRGB(35, 40, 55) or Color3.fromRGB(18, 20, 28)
+		btn.TextColor3 = isActive and Color3.fromRGB(255, 255, 255) or Color3.fromRGB(140, 145, 160)
+	end
+end
+
+fetchCloudScriptsForProvider = function(provider, searchQuery)
+	clearCloudResults()
+	searchQuery = searchQuery or ""
+	
+	if provider == "Local" then
+		task.spawn(function()
+			local data = loadLocalScriptsData()
+			local list = data[activeLocalCategory] or {}
+			if #list > 0 then
+				for _, item in ipairs(list) do
+					if not item.id then
+						item.id = tostring(tick()) .. "_" .. math.random(1000, 9999)
+					end
+					if searchQuery == "" or item.name:lower():find(searchQuery:lower(), 1, true) then
+						addLocalScriptCard(item.name, item.code, activeLocalCategory, item.id)
+					end
+				end
+			else
+				local emptyLbl = Instance.new("TextLabel", cloudScrollingFrame)
+				emptyLbl.BackgroundTransparency = 1
+				emptyLbl.Size = UDim2.new(1, 0, 0, 100)
+				emptyLbl.Font = Enum.Font.SourceSansBold
+				emptyLbl.Text = "Oops! No scripts found"
+				emptyLbl.TextColor3 = Color3.fromRGB(255, 255, 255)
+				emptyLbl.TextSize = 16
+				emptyLbl.TextXAlignment = Enum.TextXAlignment.Center
+				emptyLbl.TextYAlignment = Enum.TextYAlignment.Center
+			end
+		end)
+		return
+	end
+	
+	task.spawn(function()
+		if provider == "ScriptBlox" then
+			pcall(function()
+				local url = "https://scriptblox.com/api/script/fetch"
+				if searchQuery ~= "" then
+					url = "https://scriptblox.com/api/script/search?q=" .. HttpService:UrlEncode(searchQuery)
+				end
+				local response = fetchWebRequest(url)
+				if response then
+					local successDecode, data = pcall(function() return HttpService:JSONDecode(response) end)
+					if successDecode and data then
+						local scriptList = data.result and data.result.scripts or data.scripts
+						if type(scriptList) == "table" then
+							for _, script in ipairs(scriptList) do
+								local title = script.title or "Script"
+								local rawContent = script.script or ('loadstring(game:HttpGet("https://scriptblox.com/raw/' .. tostring(script.slug or "") .. '"))()')
+								addCloudScriptCard(title, rawContent, "ScriptBlox")
+							end
+						end
+					end
+				end
+			end)
+		elseif provider == "Rscripts" then
+			pcall(function()
+				local rUrls = {
+					"https://rscripts.net/api/v2/scripts",
+					"https://rscripts.net/api/v1/scripts",
+					"https://rscripts.net/api/scripts"
+				}
+				if searchQuery ~= "" then
+					rUrls = {
+						"https://rscripts.net/api/v2/scripts?q=" .. HttpService:UrlEncode(searchQuery),
+						"https://rscripts.net/api/v1/scripts?q=" .. HttpService:UrlEncode(searchQuery),
+						"https://rscripts.net/api/scripts?search=" .. HttpService:UrlEncode(searchQuery)
+					}
+				end
+				
+				local loaded = false
+				for _, rUrl in ipairs(rUrls) do
+					local rResponse = fetchWebRequest(rUrl)
+					if rResponse then
+						local successDecode, rData = pcall(function() return HttpService:JSONDecode(rResponse) end)
+						if successDecode and rData then
+							local rList = rData.scripts or rData.data or rData
+							if type(rList) == "table" and #rList > 0 then
+								for _, script in ipairs(rList) do
+									local title = script.title or script.name or "Rscript"
+									local rawContent = script.script or script.code or ('loadstring(game:HttpGet("https://rscripts.net/raw/' .. tostring(script.id or script.slug or "") .. '"))()')
+									addCloudScriptCard(title, rawContent, "Rscripts")
+								end
+								loaded = true
+								break
+							end
+						end
+					end
+				end
+				
+				if not loaded then
+					addCloudScriptCard("No Rscripts Found", "-- Rscripts API endpoint was unreachable or returned empty data", "Rscripts")
+				end
+			end)
+		elseif provider == "HaxHell" then
+			pcall(function()
+				local hUrls = {
+					"https://haxhell.com/api/scripts",
+					"https://haxhell.com/api/v1/scripts"
+				}
+				if searchQuery ~= "" then
+					hUrls = {
+						"https://haxhell.com/api/scripts?search=" .. HttpService:UrlEncode(searchQuery),
+						"https://haxhell.com/api/v1/scripts?q=" .. HttpService:UrlEncode(searchQuery)
+					}
+				end
+				
+				for _, hUrl in ipairs(hUrls) do
+					local hResponse = fetchWebRequest(hUrl)
+					if hResponse then
+						local successDecode, hData = pcall(function() return HttpService:JSONDecode(hResponse) end)
+						if successDecode and hData then
+							local hList = hData.scripts or hData.data or hData
+							if type(hList) == "table" then
+								for _, script in ipairs(hList) do
+									local title = script.title or script.name or "HaxHell Script"
+									local rawContent = script.script or script.code or script.content or ""
+									addCloudScriptCard(title, rawContent, "HaxHell")
+								end
+								break
+							end
+						end
+					end
+				end
+			end)
+		end
+	end)
+end
+
+for _, tInfo in ipairs(cloudTabsDataList) do
+	local btn = Instance.new("TextButton", cloudTabContainer)
+	btn.Name = tInfo.Provider .. "TabBtn"
+	btn.BackgroundColor3 = Color3.fromRGB(18, 20, 28)
+	btn.BorderSizePixel = 0
+	btn.Size = UDim2.new(0, 34, 0, 34)
+	btn.LayoutOrder = tInfo.LayoutOrder
+	btn.AutoButtonColor = false
+	btn.Text = ""
+	
+	local corner = Instance.new("UICorner", btn)
+	corner.CornerRadius = UDim.new(0.3, 0)
+	
+	local icon = Instance.new("ImageLabel", btn)
+	icon.BackgroundTransparency = 1
+	icon.Position = UDim2.new(0, 5, 0, 5)
+	icon.Size = UDim2.new(0, 24, 0, 24)
+	icon.Image = "rbxassetid://" .. tInfo.AssetId
+	icon.ImageColor3 = Color3.fromRGB(255, 255, 255)
+	
+	local textLbl = Instance.new("TextLabel", btn)
+	textLbl.BackgroundTransparency = 1
+	textLbl.Position = UDim2.new(0, 32, 0, 0)
+	textLbl.Size = UDim2.new(1, -32, 1, 0)
+	textLbl.Font = Enum.Font.SourceSansBold
+	textLbl.Text = tInfo.Name
+	textLbl.TextColor3 = Color3.fromRGB(255, 255, 255)
+	textLbl.TextSize = 12
+	textLbl.TextXAlignment = Enum.TextXAlignment.Left
+	textLbl.Visible = false
+	
+	cloudTabButtons[tInfo.Provider] = {
+		Button = btn,
+		TextLabel = textLbl
+	}
+	
+	btn.MouseButton1Click:Connect(function()
+		activeCloudProvider = tInfo.Provider
+		updateCloudTabs()
+		fetchCloudScriptsForProvider(activeCloudProvider, cloudSearchBox.Text)
+	end)
+end
+
+local localCategories = {"Saved", "Autoexec", "Favorites"}
+for i, catName in ipairs(localCategories) do
+	local subBtn = Instance.new("TextButton", localSubTabContainer)
+	subBtn.Name = catName .. "SubBtn"
+	subBtn.BackgroundColor3 = (catName == activeLocalCategory) and Color3.fromRGB(35, 40, 55) or Color3.fromRGB(18, 20, 28)
+	subBtn.BorderSizePixel = 0
+	subBtn.Size = UDim2.new(0, 85, 0, 32)
+	subBtn.LayoutOrder = i
+	subBtn.AutoButtonColor = false
+	subBtn.Text = catName
+	subBtn.TextColor3 = (catName == activeLocalCategory) and Color3.fromRGB(255, 255, 255) or Color3.fromRGB(140, 145, 160)
+	subBtn.Font = Enum.Font.SourceSansBold
+	subBtn.TextSize = 13
+	
+	local cCorner = Instance.new("UICorner", subBtn)
+	cCorner.CornerRadius = UDim.new(0.3, 0)
+	
+	localSubTabButtons[catName] = subBtn
+	
+	subBtn.MouseButton1Click:Connect(function()
+		activeLocalCategory = catName
+		updateLocalSubTabs()
+		fetchCloudScriptsForProvider("Local", "")
+	end)
+end
+
+addLocalScriptBtn.MouseButton1Click:Connect(function()
+	nameInputBox.Text = ""
+	codeInputBox.Text = ""
+	modalOverlay.Visible = true
+end)
+
+cancelBtn.MouseButton1Click:Connect(function()
+	modalOverlay.Visible = false
+end)
+
+doneBtn.MouseButton1Click:Connect(function()
+	local sName = nameInputBox.Text
+	local sCode = codeInputBox.Text
+	if sName ~= "" and sCode ~= "" then
+		local data = loadLocalScriptsData()
+		if not data[activeLocalCategory] then
+			data[activeLocalCategory] = {}
+		end
+		local newScript = {
+			id = tostring(tick()) .. "_" .. math.random(1000, 9999),
+			name = sName,
+			code = sCode
+		}
+		table.insert(data[activeLocalCategory], newScript)
+		saveLocalScriptsData()
+		modalOverlay.Visible = false
+		fetchCloudScriptsForProvider("Local", "")
+	end
+end)
+
+cloudSearchBtn.MouseButton1Click:Connect(function()
+	fetchCloudScriptsForProvider(activeCloudProvider, cloudSearchBox.Text)
+end)
+
+cloudSearchBox.FocusLost:Connect(function(enterPressed)
+	if enterPressed then
+		fetchCloudScriptsForProvider(activeCloudProvider, cloudSearchBox.Text)
+	end
+end)
+
+activeCloudProvider = "Local"
+updateCloudTabs()
+updateLocalSubTabs()
+fetchCloudScriptsForProvider("Local", "")
+
+applyTheme(currentThemeSeq, nil)
+
+return G2L["1"]
